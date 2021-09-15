@@ -1,7 +1,9 @@
 ###################
 WhatsApp Gateway Panel API by Whatsva
 ###################
-
+<br>
+<img width="122" src="https://github.com/novaariyanto/Panel-WhatsApp-Gateway/blob/master/assets/screenshoot/ScanQr.JPG?raw=true" alt="logo of docsify-awesome repository" style="max-width: 100%;">
+<br>
 This is an open source WhatsApp Panel Client project built using CodeIgniter 3 and a Mysql database.
 
 *******************
