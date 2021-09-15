@@ -20,12 +20,17 @@ class Device_model extends CI_Model
 		
 		echo "auth";
 	}
+	public function ws_url()
+    {
+    
+        return "https://multidevice.whatsva.com";
+    }
     public function add($device_name, $panel_key)
     {
-		$curlData = "http://localhost:8081/api/initInstance";
+		$curlData = $this->ws_url()."/api/initInstance";
 		$data = [
 			"instance_name"=>$device_name,
-			"apiKey"=>"mytokenA"
+			"panel_key"=>$panel_key
 		];
 		$gettinData = json_decode($this->curlData($curlData,$data));
 		if (!$this->session->has_userdata(self::SESSION_KEY)) {

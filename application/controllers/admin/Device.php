@@ -46,8 +46,8 @@ class Device extends CI_Controller
             return;
         }
         $devicename = $this->input->post('device_name');
-
-        if ($data = $this->device_model->add($devicename, "adffasds")) {
+		$datasetting = $this->setting_model->getSetting();
+        if ($data = $this->device_model->add($devicename, $datasetting->panel_key)) {
             redirect('./device');
         } else {
             $this->session->set_flashdata('message_add_device_error', 'Add Device Failure');
