@@ -125,10 +125,6 @@
                 <div class="card">
                   <div class="card-body">
                    <div class="table-responsive">
-<<<<<<< HEAD
-                    
-=======
->>>>>>> 53211c9cc44047f48ed42deb4fe6b8edc8137e63
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -195,12 +191,7 @@
                        
                       </tbody>
                     </table>
-<<<<<<< HEAD
-                     
-                   </div>
-=======
                     </div>
->>>>>>> 53211c9cc44047f48ed42deb4fe6b8edc8137e63
                     <?=$buttonNext?>
                   </div>
                 </div>

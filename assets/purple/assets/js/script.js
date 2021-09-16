@@ -23,7 +23,7 @@
          
 
             $.ajax({
-                url: url + "./../../../device/detail/"+arr[4],
+                url: url + "./../../../device/detail/"+arr[5],
                 type: "get",
                 dataType: 'json',
                 success: function (hasil) {
