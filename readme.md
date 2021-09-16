@@ -54,6 +54,8 @@ Installation
 
 -  `but you need the panel key to be able to fully run the application` 
 
+Application Demo : https://whatsva.id
+
 User Admin : 
  - Username : admin@gmail.com
  - Password : admin
