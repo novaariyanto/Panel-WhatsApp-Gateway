@@ -68,6 +68,6 @@ Please see the `license
 agreement https://github.com/novaariyanto/Panel-WhatsApp-Gateway/blob/master/license.txt`_.
 
 
-Thanks to Allah Ta'Ala for Everiting
+Thanks to Allah Ta'Ala for Everything
 
 
