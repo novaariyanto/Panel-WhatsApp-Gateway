@@ -86,7 +86,7 @@
                                     </div>
 									<div class="feature-content">
                                     	<h3 class="feature-title mt-0">Send Message Text</h3>
-                                    	<p class="text-sm mb-0">Send a text message through the fire that has been provided.</p>
+                                    	<p class="text-sm mb-0">Send a text message through the API that has been provided.</p>
 									</div>
 								</div>
                             </div>
@@ -98,7 +98,7 @@
                                     </div>
 									<div class="feature-content">
                                     	<h3 class="feature-title mt-0">Send Document</h3>
-                                    	<p class="text-sm mb-0">Send a Document message through the fire that has been provided</p>
+                                    	<p class="text-sm mb-0">Send a Document message through the API that has been provided</p>
 									</div>
 								</div>
                             </div>
