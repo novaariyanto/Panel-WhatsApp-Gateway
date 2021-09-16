@@ -76,13 +76,13 @@
               </a>
             </li>
 
-            <li class="nav-item active">
+            <li class="nav-item ">
               <a class="nav-link" href="<?=base_url("index.php/device")?>">
                 <span class="menu-title">Device</span>
                 <i class="mdi mdi-cellphone-iphone menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="<?=base_url('index.php/message')?>">
                 <span class="menu-title">Message</span>
                 <i class="mdi mdi-message-text menu-icon"></i>
