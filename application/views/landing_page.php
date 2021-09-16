@@ -109,8 +109,8 @@
 										<img class="asset-dark" src="<?=base_url('/assets/switch/')?>dist/images/feature-03-dark.svg" alt="Feature 03">
                                     </div>
 									<div class="feature-content">
-                                    	<h3 class="feature-title mt-0">Send List Message WhatsApp</h3>
-                                    	<p class="text-sm mb-0">We can send a list of whatsapp messages very easily</p>
+                                    	<h3 class="feature-title mt-0">Send Button Message WhatsApp</h3>
+                                    	<p class="text-sm mb-0">We can send a Button Message of whatsapp messages very easily</p>
 									</div>
 								</div>
                             </div>
