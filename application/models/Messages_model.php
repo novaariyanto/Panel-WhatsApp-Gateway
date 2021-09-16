@@ -36,7 +36,6 @@ class Messages_model extends CI_Model
 		$this->db->join("tb_device","tb_message.instance_key = tb_device.api_key","left");
 		$this->db->order_by("tb_message.id","desc");
 		$this->db->limit($limit,$start);
-		
         $query = $this->db->get();
 		return $query->result();
 	}

@@ -129,7 +129,7 @@
                       <thead>
                         <tr>
                           <th>Number</th>
-                          <th>Instance Key</th>
+                          <th>Device</th>
                           <th>Message</th>
                           <th>Type</th>
                           <th>Date</th>
