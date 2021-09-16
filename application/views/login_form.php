@@ -37,13 +37,13 @@
 		<?php endif ?>
                 <form class="pt-3" action="" method="post">
                   <div class="form-group">
-                    <input type="email" name="username" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                    <input type="email" name="username" value="admin@gmail.com" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
                     <div class="invalid-feedback">
 					<?= form_error('username') ?>
 				</div>
                   </div>
                   <div class="form-group">
-                    <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" name="password" value="admin" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
                     <div class="invalid-feedback">
 					<?= form_error('password') ?>
 				</div>

@@ -4,7 +4,7 @@
     if(url.includes("/device/authqr/")){
         var urla = window.location.pathname;
         var arr = urla.split('/')
-        console.log(window.location.host)
+        console.log(arr[4])
 
         console.log("change qr")
         var timeleft = 15;
@@ -23,7 +23,7 @@
          
 
             $.ajax({
-                url: url + "./../../../device/detail/"+arr[5],
+                url: url + "./../../../device/detail/"+arr[4],
                 type: "get",
                 dataType: 'json',
                 success: function (hasil) {
