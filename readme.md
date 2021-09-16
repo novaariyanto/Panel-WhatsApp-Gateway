@@ -60,6 +60,10 @@ User Admin :
  - Username : admin@gmail.com
  - Password : admin
 
+ Article About WhatsApp Panel Gateway by Whatsva : 
+
+ - https://kejarkoding.com/2021/09/16/panel-whatsapp-gateway-client/
+
 *******
 License
 *******
