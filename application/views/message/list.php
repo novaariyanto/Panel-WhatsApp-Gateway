@@ -107,11 +107,13 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            
+         
             <div class="page-header">
+            
               <h3 class="page-title">
-                </span> Message
+                </span> Message 
               </h3>
+             
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Message</a></li>
@@ -119,8 +121,11 @@
                 </ul>
                
               </nav>
+              
             </div>
+           <a href="<?=base_url('/index.php/message/add')?>" class="btn btn-sm btn-primary" style="margin-top:-35px;margin-right:-4px" >Add </a>
             <div class="row">
+           
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -142,7 +147,7 @@
                          
                           $page = @$_GET['page'];
                           $page2 = (int)$page + 1;
-                            $limit = 8;
+                            $limit = 10;
                             if(!@$page){
                                 $start = 0;
                             }else{
