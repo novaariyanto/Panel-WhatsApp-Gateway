@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		echo "landing page";
+			$this->load->view('landing_page');
 	}
 	// public function dashboard()
 	// {

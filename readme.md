@@ -54,6 +54,10 @@ Installation
 
 -  `but you need the panel key to be able to fully run the application` 
 
+User Admin : 
+ - Username : admin@gmail.com
+ - Password : admin
+
 *******
 License
 *******
