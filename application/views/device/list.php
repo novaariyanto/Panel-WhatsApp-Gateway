@@ -139,7 +139,24 @@
                       </thead>
                       <tbody>
                           <?php 
-                          $i = 0;
+
+                        $page = @$_GET['page'];
+                        $page2 = (int)$page + 1;
+                          $limit = 10;
+                          if(!@$page){
+                              $start = 0;
+                          }else{
+                              $start = $page * $limit;
+                              
+                          }
+                          
+                          if(($start+$limit) >= $devices_count){
+                              $buttonNext = '<a href="#" class="btn btn-sm">Finis</a>';
+                          }else{
+                              $buttonNext = '<a href="?page='.$page2.'" class="btn btn-sm">Next</a>';
+                          }
+  
+                          $i = $start ;
                         
                           foreach ($devices as $value) {
                              
@@ -173,6 +190,7 @@
                     </table>
                     
                    </div>
+                   <?=$buttonNext?>
                   </div>
                 </div>
               </div>

@@ -36,7 +36,6 @@ class Device_model extends CI_Model
 		if (!$this->session->has_userdata(self::SESSION_KEY)) {
             return null;
         }
-
         $user_id = $this->session->userdata(self::SESSION_KEY);
 		if($gettinData->success){
 			$gettinData->data->instance_name;
@@ -51,6 +50,7 @@ class Device_model extends CI_Model
 				return $this->db->insert($this->_table, $data);
 			
 		}else{
+            $this->session->set_flashdata('message_add_device_error', $gettinData->message);
 			return FALSE;
 		}
     }
@@ -69,7 +69,41 @@ class Device_model extends CI_Model
        return $result;
 
     }
-    public function getAll()
+    public function getCount()
+	{
+        if (!$this->session->has_userdata(self::SESSION_KEY)) {
+            return null;
+        }
+        $user_id = $this->session->userdata(self::SESSION_KEY);
+
+        // $query = $this->db->get_where($this->_table, ['id_user' => $user_id]);
+        $this->db->select("*");
+		$this->db->from($this->_table);
+        $this->db->where("id_user",$user_id);
+		$this->db->order_by("id","desc");
+        $query = $this->db->get();
+
+        
+	
+        return 	$query->num_rows();
+	}
+    public function getAll($limit,$start)
+    {
+        if (!$this->session->has_userdata(self::SESSION_KEY)) {
+            return null;
+        }
+        $user_id = $this->session->userdata(self::SESSION_KEY);
+
+        // $query = $this->db->get_where($this->_table, ['id_user' => $user_id]);
+        $this->db->select("*");
+		$this->db->from($this->_table);
+		$this->db->where("id_user",$user_id);
+		$this->db->order_by("id","desc");
+		$this->db->limit($start,$limit);
+        $query = $this->db->get();
+		return $query->result();
+	}
+    public function getAlls()
     {
         if (!$this->session->has_userdata(self::SESSION_KEY)) {
             return null;
@@ -77,6 +111,7 @@ class Device_model extends CI_Model
         $user_id = $this->session->userdata(self::SESSION_KEY);
 
         $query = $this->db->get_where($this->_table, ['id_user' => $user_id]);
+    
 		return $query->result();
 	}
 	public function getbyId($id)

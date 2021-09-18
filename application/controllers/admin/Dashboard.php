@@ -15,11 +15,11 @@ class Dashboard extends CI_Controller
 	}
     public function index()
     {
-        $data['devices'] = $this->device_model->getAll();
+        
 		$data['messages_count']= $this->messages_model->getCount();
         $data['setting'] = $this->setting_model->getSetting();
         $data['current_user'] = $this->auth_model->current_user();
-        $data['devices'] = $this->device_model->getAll();
+        $data['devices'] = $this->device_model->getAlls();
 
     	$this->load->view('layouts/header',$data);
     	$this->load->view('dashboard/index',$data);

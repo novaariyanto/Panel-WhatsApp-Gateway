@@ -17,22 +17,35 @@ class Messages extends CI_Controller
         // Takes raw data from the request
         $json = file_get_contents('php://input');
         $data = json_decode($json);
+    
         if (!@$data->instance_key) {
-            $response = json_encode(["success" => false, "message" => "instance_key empty"]);
+            $response = ["success" => false, "message" => "instance_key empty"];
         } else if (!@$data->jid) {
-            $response = json_encode(["success" => false, "message" => "jid empty"]);
+            $response = ["success" => false, "message" => "jid empty"];
         } else if (!@$data->message) {
-            $response = json_encode(["success" => false, "message" => "message empty"]);
+            $response = ["success" => false, "message" => "message empty"];
         } else {
             $datasetting = $this->setting_model->getSetting();
-            $response = $this->whatsva->sendMessageText($data->instance_key, $data->jid, $data->message,$datasetting->panel_key);
-            $response = json_decode($response);
-            if ($response->success) {
-                $type = "chat-text";
-                $status = "received";
-                $date_time = Date('Y-m-d h:m:s');
-                $this->messages_model->insert($data->instance_key, $data->message, $type, $status, $date_time, $response);
+            $cekstatus = $this->whatsva->instancecData($data->instance_key,$datasetting->panel_key);
+            $cekstatus = json_decode($cekstatus);
+
+            if($cekstatus->success){
+                if($cekstatus->data->instance_status){
+                    $response = $this->whatsva->sendMessageText($data->instance_key, $data->jid, $data->message,$datasetting->panel_key);
+                    $response = json_decode($response);
+                    if ($response->success) {
+                        $type = "chat-text";
+                        $status = "received";
+                        $date_time = Date('Y-m-d h:m:s');
+                        $this->messages_model->insert($data->instance_key, $data->message, $type, $status, $date_time, $response);
+                    }
+                }else{
+                    $response =["success" => false, "message" => "your instance/ device is disconnect"];
+                }
+            }else{
+                $response = ["success" => false, "message" => "can't connect server "];
             }
+           
         }
         echo json_encode($response);
     }
