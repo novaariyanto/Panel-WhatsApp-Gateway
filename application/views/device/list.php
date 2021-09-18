@@ -117,9 +117,10 @@
                 <li class="breadcrumb-item"><a href="#">Device</a></li>
                   <li class="breadcrumb-item active" aria-current="page">List</li>
                 </ul>
-                <a class="btn btn-primary btn-sm " style="float:center" href="<?=base_url("index.php/device/add")?>">Add +</a>
               </nav>
             </div>
+            <a href="<?=base_url('/index.php/device/add')?>" class="btn btn-sm btn-primary" style="margin-top:-35px;margin-right:-4px" >Add </a>
+          
             <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
