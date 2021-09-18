@@ -40,7 +40,7 @@ class Message extends CI_Controller
 
         $data['setting'] = $this->setting_model->getSetting();
         $data['current_user'] = $this->auth_model->current_user();
-        $data['devices'] = $this->device_model->getAll();
+        $data['devices'] = $this->device_model->getAlls();
 
         $rules = $this->device_model->rules();
         $this->form_validation->set_rules($rules);
@@ -61,7 +61,7 @@ class Message extends CI_Controller
         }
         $data['setting'] = $this->setting_model->getSetting();
         $data['current_user'] = $this->auth_model->current_user();
-        $data['devices'] = $this->device_model->getAll();
+        $data['devices'] = $this->device_model->getAlls();
         $this->load->view('layouts/header', $data);
         $this->load->view('device/add', $data);
         $this->load->view('layouts/footer');
