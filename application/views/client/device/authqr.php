@@ -171,6 +171,7 @@
                             <p>4. Point your phone to this screen to capture the code</p>
                         </div>
                         <div class="col-sm-6 text-center">
+                          <input type="hidden" value="<?=$device->id?>" id="id_device">
                         <div id="qrcode" style="margin:10px;height:200px"></div>
                         <br>
                                 <p> This page will refresh in <span id="countdowntimer">15</span> Seconds</p>

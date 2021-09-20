@@ -102,11 +102,15 @@ class Device extends CI_Controller
     }
     public function authQr($device)
     {
+    
+
 		$datasetting = $this->setting_model->getSetting();
         $data_device = $this->device_model->getbyId($device);
+     
         if (count((array) $data_device)) {
             $qr = $this->whatsva->generatedQr($data_device->api_key,$datasetting->panel_key);
             $qr = json_decode($qr);
+         
             if ($qr->success) {
                 $qrCode = $qr->data->qr;
 

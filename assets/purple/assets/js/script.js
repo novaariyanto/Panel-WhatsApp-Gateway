@@ -5,6 +5,7 @@
         var urla = window.location.pathname;
         var arr = urla.split('/')
         console.log(arr[4])
+        var id_device = $("#id_device").val()
 
         console.log("change qr")
         var timeleft = 15;
@@ -23,7 +24,7 @@
          
 
             $.ajax({
-                url: url + "./../../../device/detail/"+arr[5],
+                url: url + "./../../../api/device/detail/"+id_device,
                 type: "get",
                 dataType: 'json',
                 success: function (hasil) {
@@ -40,7 +41,7 @@
                   }
                 }
               })
-        }, 2000);
+        }, 3000);
 
 
     }

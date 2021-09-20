@@ -70,6 +70,8 @@ $route['device/logout/(:any)'] = 'client/device/logoutInstance/$1';
 $route['message'] = 'client/message';
 $route['message/add'] = 'client/message/add';
 
+$route['api/device/detail/(:any)'] = 'api/devices/getQR/$1';
+
 $route['api'] = 'api/messages';
 $route['api/sendMessageText'] = 'api/messages/sendMessageText';
 $route['api/sendImageUrl'] = 'api/messages/sendImageUrl';
