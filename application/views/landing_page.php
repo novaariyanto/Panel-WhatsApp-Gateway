@@ -35,7 +35,7 @@
 	                        <h1 class="hero-title mt-0">WhatsApp Gateway Panel Client</h1>
 	                        <p class="hero-paragraph">such as building Chat Bots, WhatsApp message notifications and much more.</p>
 	                        <div class="hero-cta">
-								<a class="button button-primary" href="index.php/auth/login">Get Access</a>
+								<a class="button button-primary" href="<?=base_url('/index.php/login')?>">Get Access</a>
 								<div class="lights-toggle">
 									<input id="lights-toggle" type="checkbox" name="lights-toggle" class="switch" checked="checked">
 									<label for="lights-toggle" class="text-xs"><span>Turn me <span class="label-text">dark</span></span></label>

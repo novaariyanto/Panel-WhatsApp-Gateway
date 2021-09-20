@@ -26,40 +26,45 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-center p-5">
                 <div class="brand-logo">
-                    WhatsApp Panel
+                  WhatsApp Panel
                 </div>
                
-                <h6 class="font-weight-light">Sign in to continue.</h6>
+                <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
                 <?php if($this->session->flashdata('message_login_error')): ?>
 			<div class="alert alert-warning">
 					<?= $this->session->flashdata('message_login_error') ?>
 			</div>
 		<?php endif ?>
-                <form class="pt-3" action="" method="post">
+            <form class="pt-3" action="" method="post">
                   <div class="form-group">
-                    <input type="email" name="username" value="" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" required>
+                    <input type="text" class="form-control form-control-lg" name="username" id="exampleInputUsername1" placeholder="Username" required>
                     <div class="invalid-feedback">
 					<?= form_error('username') ?>
-				</div>
-                  </div>
+				</div> 
+                </div>
                   <div class="form-group">
-                    <input type="password" name="password" value="" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" required>
-                    <div class="invalid-feedback"> 
+                    <input type="email" class="form-control form-control-lg" name="email" id="exampleInputEmail1" placeholder="Email" required>
+                    <div class="invalid-feedback">
+					<?= form_error('email') ?>
+				</div>  
+                </div>
+                
+                  <div class="form-group">
+                    <input type="password" class="form-control form-control-lg" name="password" id="exampleInputPassword1" placeholder="Password" required>
+                    <div class="invalid-feedback">
 					<?= form_error('password') ?>
-				</div>
-                  </div>
-                  <div class="mt-3">
-                    <input type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="#">SIGN IN</input>
-                  </div>
-                  <div class="my-2 d-flex justify-content-between align-items-center">
+				</div> 
+                </div>
+                  <div class="mb-4">
                     <div class="form-check">
                       <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input"> Keep me signed in </label>
+                        <input type="checkbox" class="form-check-input"> I agree to all Terms & Conditions </label>
                     </div>
-                    <a href="#" class="auth-link text-black">Forgot password?</a>
                   </div>
-
-                  <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="<?=base_url('index.php/register')?>" class="text-primary">Create</a>
+                  <div class="mt-3">
+                  <input type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="#">SIGN UP</input>
+                  </div>
+                  <div class="text-center mt-4 font-weight-light"> Already have an account? <a href="<?=base_url('index.php/login')?>" class="text-primary">Login</a>
                   </div>
                 </form>
               </div>
@@ -81,7 +86,6 @@
     <script src="<?=base_url("assets/purple/assets/js/hoverable-collapse.js")?>"></script>
     <script src="<?=base_url("assets/purple/assets/js/misc.js")?>"></script>
     <script src="<?=base_url("assets/purple/assets/js/jquery.min.js")?>"></script>
-   
     <!-- endinject -->
   </body>
 </html>

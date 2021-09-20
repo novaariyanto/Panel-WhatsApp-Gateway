@@ -25,12 +25,12 @@ class Auth extends CI_Controller
 		if($this->auth_model->login($username, $password)){
 			redirect('dashboard');
 		} else {
-			$this->session->set_flashdata('message_login_error', 'Login Gagal, pastikan username dan passwrod benar!');
+			$this->session->set_flashdata('message_login_error', 'Login failed, Username and password do not match');
 		}
 
 		$this->load->view('login_form');
 	}
-
+	
 	public function logout()
 	{
 		$this->load->model('auth_model');

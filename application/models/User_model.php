@@ -61,6 +61,7 @@ class User_model extends CI_Model
         // $query = $this->db->get_where($this->_table, ['id_user' => $user_id]);
         $this->db->select("*");
 		$this->db->from($this->_table);
+        $this->db->where('status','1');
 		$this->db->order_by("id","desc");
         $query = $this->db->get();
 
