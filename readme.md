@@ -64,7 +64,11 @@ User Admin :
  - Username : client10@gmail.com
  - Password : client10
 
- Discussion : 
+
+ *******
+ Forum Discussion : 
+ *******
+
  - Telegram : https://t.me/whatsvapanelgateway
  - Discord  : https://discord.gg/jUuanZ7V
 
