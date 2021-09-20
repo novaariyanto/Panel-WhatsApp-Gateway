@@ -30,6 +30,12 @@
                 </div>
                
                 <h6 class="font-weight-light">Sign in to continue.</h6>
+                <?php if($this->session->flashdata('message_register_success')): ?>
+			<div class="alert alert-success">
+					<?= $this->session->flashdata('message_register_success') ?>
+			</div>
+		<?php endif ?>
+                
                 <?php if($this->session->flashdata('message_login_error')): ?>
 			<div class="alert alert-warning">
 					<?= $this->session->flashdata('message_login_error') ?>
