@@ -70,13 +70,13 @@
           <ul class="nav">
             
             <li class="nav-item">
-              <a class="nav-link" href="<?=base_url("index.php/admin")?>">
+              <a class="nav-link" href="<?=base_url("index.php/dashboard")?>">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
          
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="<?=base_url("index.php/device")?>">
                 <span class="menu-title">Device</span>
                 <i class="mdi mdi-cellphone-iphone menu-icon"></i>
@@ -88,12 +88,7 @@
                 <i class="mdi mdi-message-text menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="<?=base_url("index.php/setting")?>">
-                <span class="menu-title">Settings</span>
-                <i class="mdi mdi-settings menu-icon"></i>
-              </a>
-            </li>
+          
             <li class="nav-item">
               <a class="nav-link" href="https://documenter.getpostman.com/view/6198796/U16opPKp" target="_blank">
                 <span class="menu-title">Documentation</span>
@@ -110,47 +105,32 @@
             
             <div class="page-header">
               <h3 class="page-title">
-                </span> Setting
+                </span> Device
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Setting</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                <li class="breadcrumb-item"><a href="#">Device</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Add</li>
                 </ul>
               </nav>
             </div>
             <div class="row">
-            <div class="col-md-8 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                   
-                    <form class="forms-sample" method="post" action="">
+                  <form class="forms-sample" method="post" action="">
                       <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Application Name <br> <span style="color:red"> <?= form_error('app_name') ?></span></label>
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Device Name <br> <span style="color:red"> <?= form_error('device_name') ?> <?php echo $this->session->flashdata('message_add_device_error'); ?></span></label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control"  name="app_name" id="exampleInputUsername2" placeholder="Panel WhatsApp" value="<?=$setting->app_name ?>">
+                          <input type="text" class="form-control"  name="device_name" id="exampleInputUsername2" placeholder="ex : Device A" value="">
                          
                       </div>
                     
                          </div>
-                      <div class="form-group row">
-                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Domain <br> <span style="color:red"><?= form_error('domain') ?></span></label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" name="domain" id="exampleInputEmail2" placeholder="Domain" value="<?=$setting->domain ?>">
-                         
-                        </div>
-                       
-                      </div>
-                      <div class="form-group row">
-                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Panel Key <br> <span style="color:red"><?= form_error('panel_key') ?></span></label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" name="panel_key" id="exampleInputMobile" placeholder="xxxasdzadsdasxsdasd" value="<?=$setting->panel_key ?>">
-                         
-                        </div>
-                       
-                      </div>
+                      
                       <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
                     </form>
+              
                   </div>
                 </div>
               </div>

@@ -22,28 +22,28 @@
             </form>
           </div>
           <ul class="navbar-nav navbar-nav-right">
-           
+
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link">
                 <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
               </a>
             </li>
-           
+
             <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
                 <i class="mdi mdi-bell-outline"></i>
-              
+
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
                 <h6 class="p-3 mb-0">Notifications</h6>
-               
-               
+
+
               </div>
             </li>
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="<?=  base_url("assets/purple/assets/images/faces/face1.jpg")?>" alt="image">
+                  <img src="<?=base_url("assets/purple/assets/images/faces/face1.jpg")?>" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
@@ -51,7 +51,7 @@
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-             
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?=base_url("index.php/auth/logout")?>">
                   <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
@@ -68,53 +68,42 @@
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
-            
+
             <li class="nav-item">
-              <a class="nav-link" href="<?=base_url("index.php/admin")?>">
+              <a class="nav-link" href="<?=base_url("index.php/dashboard")?>">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+
          
-            <li class="nav-item active">
-              <a class="nav-link" href="<?=base_url("index.php/device")?>">
-                <span class="menu-title">Device</span>
-                <i class="mdi mdi-cellphone-iphone menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?=base_url('index.php/message')?>">
-                <span class="menu-title">Message</span>
-                <i class="mdi mdi-message-text menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item ">
+           <li class="nav-item ">
               <a class="nav-link" href="<?=base_url("index.php/setting")?>">
                 <span class="menu-title">Settings</span>
                 <i class="mdi mdi-settings menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://documenter.getpostman.com/view/6198796/U16opPKp" target="_blank">
-                <span class="menu-title">Documentation</span>
-                <i class="mdi mdi-file-document-box menu-icon"></i>
+            <li class="nav-item ">
+              <a class="nav-link" href="<?=base_url("index.php/user")?>">
+                <span class="menu-title">User</span>
+                <i class="mdi mdi-account menu-icon"></i>
               </a>
             </li>
-           
-           
+         
+
           </ul>
         </nav>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            
+
             <div class="page-header">
               <h3 class="page-title">
-                </span> Device
+                </span> User
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Device</a></li>
+                <li class="breadcrumb-item"><a href="#">User</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Add</li>
                 </ul>
               </nav>
@@ -125,17 +114,41 @@
                   <div class="card-body">
                   <form class="forms-sample" method="post" action="">
                       <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Device Name <br> <span style="color:red"> <?= form_error('device_name') ?> <?php echo $this->session->flashdata('message_add_device_error'); ?></span></label>
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Username <br> <span style="color:red">  <?=form_error('username')?> <?php echo $this->session->flashdata('message_username_exists_error'); ?></span></label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control"  name="device_name" id="exampleInputUsername2" placeholder="ex : Device A" value="">
-                         
+                          <input type="text" class="form-control"  name="username" id="exampleInputUsername2" placeholder="ex : client01" value="<?=@$_POST['username']?>">
+
+                        </div>
                       </div>
-                    
-                         </div>
-                      
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Email <br> <span style="color:red"> <?=form_error('email')?> </span></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control"  name="email" id="exampleInputUsername2" placeholder="ex : client01@gmail.com" value="<?=@$_POST['email']?>">
+
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Password <br> <span style="color:red"> <?=form_error('password')?> </span></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control"  name="password" id="exampleInputUsername2" placeholder="******" value="<?=@$_POST['password']?>">
+
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Level <br> <span style="color:red"> <?=form_error('level')?> </span></label>
+                        <div class="col-sm-9">
+                          <select name="level" id="" class="form-control">
+                            <option value="">Select Level</option>
+                            <option value="1">Client</option>
+                            <option value="2">Admin</option>
+                          </select>
+                         
+                        </div>
+                      </div>
+
                       <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
                     </form>
-              
+
                   </div>
                 </div>
               </div>

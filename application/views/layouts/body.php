@@ -70,7 +70,7 @@
           <ul class="nav">
             
             <li class="nav-item">
-              <a class="nav-link" href="<?=base_url("index.php/admin")?>">
+              <a class="nav-link" href="<?=base_url("index.php/dashboard")?>">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>

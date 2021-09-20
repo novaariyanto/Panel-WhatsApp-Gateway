@@ -23,7 +23,7 @@ class Auth extends CI_Controller
 		 $password = $this->input->post('password');
 
 		if($this->auth_model->login($username, $password)){
-			redirect('admin');
+			redirect('dashboard');
 		} else {
 			$this->session->set_flashdata('message_login_error', 'Login Gagal, pastikan username dan passwrod benar!');
 		}

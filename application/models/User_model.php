@@ -1,78 +1,56 @@
 <?php
 
-class Device_model extends CI_Model
+class User_model extends CI_Model
 {
-    private $_table = "tb_device";
+    private $_table = "tb_user";
     const SESSION_KEY = 'id';
 
     public function rules()
     {
         return [
             [
-                'field' => 'device_name',
-                'label' => 'Device Name',
+                'field' => 'username',
+                'label' => 'Username',
+                'rules' => 'required',
+            ],
+            [
+                'field' => 'email',
+                'label' => 'Email',
+                'rules' => 'required',
+            ], [
+                'field' => 'password',
+                'label' => 'Password',
+                'rules' => 'required',
+            ], [
+                'field' => 'level',
+                'label' => 'Level',
                 'rules' => 'required',
             ]
         ];
     }
-	public function authQr()
-	{
-		
-		echo "auth";
-	}
-	public function ws_url()
-    {
-    
-        return "https://multidevice.whatsva.com";
-    }
-    public function add($device_name, $panel_key)
-    {
-        $data_user = $this->auth_model->current_user();
-        $username = str_replace(' ', '_', $data_user->username);
+	
 
-		$curlData = $this->ws_url()."/api/initInstance";
-		$data = [
-			"instance_name"=> $username."_".$device_name,
-			"panel_key"=>$panel_key
-		];
-		$gettinData = json_decode($this->curlData($curlData,$data));
-	    if (!$this->session->has_userdata(self::SESSION_KEY)) {
-            return null;
-        }
-        $user_id = $this->session->userdata(self::SESSION_KEY);
- 
-		if($gettinData->success){ 
-			$gettinData->data->instance_name;
-				$data = [
-					'device_name' => $gettinData->data->instance_name,
-					'api_key' => $gettinData->data->instance_key,
-					'status' => "1",
-					'id_user'=> $user_id,
-					'reg_date'=>date('Y-m-d')
-				];
-		
-				return $this->db->insert($this->_table, $data);
-			
-		}else{
-            $this->session->set_flashdata('message_add_device_error', $gettinData->message);
+    public function insert($username,$email,$password,$level)
+    {
+		$cekusername = $this->getWhere(["username"=>$username]);
+        
+        if($cekusername){
+            $this->session->set_flashdata('message_username_exists_error', "Username Already exists");
 			return FALSE;
-		}
-    }
-    public function curlData($url,$data)
-    {
-        $curl = curl_init();
+        }else{
+            $data = [
+                'username' => $username,
+                'email' => $email,
+                'password' => password_hash($password,PASSWORD_DEFAULT),
+                'level'=> $level,
+                'status'=> "1"
+            ];
+            return $this->db->insert($this->_table, $data);
+        }
+
        
-        $payload = json_encode($data);
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        curl_close($ch);
-       return $result;
-
     }
+    
     public function getCount()
 	{
         if (!$this->session->has_userdata(self::SESSION_KEY)) {
@@ -83,7 +61,6 @@ class Device_model extends CI_Model
         // $query = $this->db->get_where($this->_table, ['id_user' => $user_id]);
         $this->db->select("*");
 		$this->db->from($this->_table);
-        $this->db->where("id_user",$user_id);
 		$this->db->order_by("id","desc");
         $query = $this->db->get();
 
@@ -101,7 +78,7 @@ class Device_model extends CI_Model
         // $query = $this->db->get_where($this->_table, ['id_user' => $user_id]);
         $this->db->select("*");
 		$this->db->from($this->_table);
-		$this->db->where("id_user",$user_id);
+        $this->db->where("status","1");
 		$this->db->order_by("id","desc");
 		$this->db->limit($start,$limit);
         $query = $this->db->get();
@@ -123,6 +100,11 @@ class Device_model extends CI_Model
 		$query = $this->db->get_where($this->_table, ['id' => $id]);
         return $query->row();
 	}
+    public function getWhere($where)
+	{
+		$query = $this->db->get_where($this->_table, $where);
+        return $query->row();
+	}
     public function getSetting()
     {
         $query = $this->db->get_where($this->_table, ['id' => "1"]);
@@ -142,5 +124,9 @@ class Device_model extends CI_Model
 
         return $this->db->update($this->_table, $data, ['id' => $id]);
     }
+    public function delete($id)
+	{
+		return $this->db->update($this->_table, ['status'=>'0'], ['id' => $id]);
+	}
 
 }

@@ -49,18 +49,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['admin'] = 'admin/dashboard';
+$route['dashboard'] = 'dashboard';
 $route['setting'] = 'admin/setting';
 
-$route['device'] = 'admin/device';
-$route['device/add'] = 'admin/device/add';
-$route['device/insert'] = 'admin/device/insert';
-$route['device/authqr/(:any)'] = 'admin/device/authQr/$1';
-$route['device/detail/(:any)'] = 'admin/device/getQR/$1';
-$route['device/logout/(:any)'] = 'admin/device/logoutInstance/$1';
+$route['user'] = 'admin/user';
+$route['user/add'] = 'admin/user/add';
+$route['user/insert'] = 'admin/user/insert';
+$route['user/delete/(:any)'] = 'admin/user/delete/$1';
 
-$route['message'] = 'admin/message';
-$route['message/add'] = 'admin/message/add';
+$route['device'] = 'client/device';
+$route['device/add'] = 'client/device/add';
+$route['device/insert'] = 'client/device/insert';
+$route['device/authqr/(:any)'] = 'client/device/authQr/$1';
+$route['device/detail/(:any)'] = 'client/device/getQR/$1';
+$route['device/logout/(:any)'] = 'client/device/logoutInstance/$1';
+
+$route['message'] = 'client/message';
+$route['message/add'] = 'client/message/add';
 
 $route['api'] = 'api/messages';
 $route['api/sendMessageText'] = 'api/messages/sendMessageText';

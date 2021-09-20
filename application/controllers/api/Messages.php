@@ -37,7 +37,7 @@ class Messages extends CI_Controller
                         $type = "chat-text";
                         $status = "received";
                         $date_time = Date('Y-m-d h:m:s');
-                        $this->messages_model->insert($data->instance_key, $data->message, $type, $status, $date_time, $response);
+                        $this->messages_model->insert($data->instance_key, $data->message, $data->jid,$type, $status, $date_time, $response);
                     }
                 }else{
                     $response =["success" => false, "message" => "your instance/ device is disconnect"];

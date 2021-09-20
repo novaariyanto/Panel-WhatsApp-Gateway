@@ -9,6 +9,10 @@ class Device extends CI_Controller
         if (!$this->auth_model->current_user()) {
             redirect('auth/login');
         }
+        $data_user =$this->auth_model->current_user(); 
+        if($data_user->level !== "1"){
+            redirect('/dashboard');
+        }
         $this->load->model('setting_model');
         $this->load->model('device_model');
 		$this->load->model('messages_model');
@@ -30,11 +34,10 @@ class Device extends CI_Controller
 		}
 
         $data['devices'] = $this->device_model->getAll($start,$limit);
-       
         $data['devices_count']= $this->device_model->getCount();
 
         $this->load->view('layouts/header', $data);
-        $this->load->view('device/list', $data);
+        $this->load->view('client/device/list', $data);
         $this->load->view('layouts/footer');
 
     }
@@ -52,20 +55,18 @@ class Device extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $this->load->view('layouts/header', $data);
-            $this->load->view('device/add', $data);
+            $this->load->view('client/device/add', $data);
             $this->load->view('layouts/footer');
             return;
         }
         $devicename = $this->input->post('device_name');
 		$datasetting = $this->setting_model->getSetting();
-        if ($data = $this->device_model->add($devicename, $datasetting->panel_key)) {
+        if ($this->device_model->add($devicename, $datasetting->panel_key)) {
             redirect('./device');
         }
-        $data['setting'] = $this->setting_model->getSetting();
-        $data['current_user'] = $this->auth_model->current_user();
-        $data['devices'] = $this->device_model->getAlls();
+      
         $this->load->view('layouts/header', $data);
-        $this->load->view('device/add', $data);
+        $this->load->view('client/device/add', $data);
         $this->load->view('layouts/footer');
 
     }
@@ -129,7 +130,7 @@ class Device extends CI_Controller
         $data['device'] = $data_device;
 
         $this->load->view('layouts/header', $data);
-        $this->load->view('device/authqr', $data);
+        $this->load->view('client/device/authqr', $data);
         $this->load->view('layouts/footer');
     }
     // ... ada kode lain di sini ...

@@ -47,7 +47,7 @@
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black"><?=$current_user->username?></p>
+                    <p class="mb-1 text-black"><?=$current_user->username?></p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -70,13 +70,13 @@
           <ul class="nav">
             
             <li class="nav-item">
-              <a class="nav-link" href="<?=base_url("index.php/admin")?>">
+              <a class="nav-link" href="<?=base_url("index.php/dashboard")?>">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
          
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="<?=base_url("index.php/device")?>">
                 <span class="menu-title">Device</span>
                 <i class="mdi mdi-cellphone-iphone menu-icon"></i>
@@ -88,12 +88,7 @@
                 <i class="mdi mdi-message-text menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?=base_url("index.php/setting")?>">
-                <span class="menu-title">Settings</span>
-                <i class="mdi mdi-settings menu-icon"></i>
-              </a>
-            </li>
+          
             <li class="nav-item">
               <a class="nav-link" href="https://documenter.getpostman.com/view/6198796/U16opPKp" target="_blank">
                 <span class="menu-title">Documentation</span>
@@ -107,89 +102,94 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="row" id="proBanner">
-              <div class="col-12">
-                <span class="d-flex align-items-center purchase-popup">
-                  <p>To use this application you need PANEL_KEY, we can get it on <a href="https://kejarkoding.com/shop/">Kejarkoding.com</a> <br><br>Join Telegram group <a href="https://t.me/whatsvapanelgateway">Link Group</a> </p>
-                  <a href="https://kejarkoding.com/shop/" target="_blank" class="btn download-button purchase-button ml-auto">GET PANEL KEY</a>
-                  <i class="mdi mdi-close" id="bannerClose"></i>
-                </span>
-              </div>
-            </div>
+            
             <div class="page-header">
               <h3 class="page-title">
-                <span class="page-title-icon bg-gradient-primary text-white mr-2">
-                  <i class="mdi mdi-home"></i>
-                </span> Dashboard
+                </span> Device
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                  </li>
+                <li class="breadcrumb-item"><a href="#">Device</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">List</li>
                 </ul>
               </nav>
             </div>
+            <a href="<?=base_url('/index.php/device/add')?>" class="btn btn-sm btn-primary" style="margin-top:-35px;margin-right:-4px" >Add </a>
+          
             <div class="row">
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card bg-gradient-danger card-img-holder text-white">
-                  <div class="card-body">
-                    <img  src="<?= base_url("assets/purple/assets/images/dashboard/circle.svg")?>"  class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Device <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-5"><?=sizeof($devices)?></h2>
-                    <h6 class="card-text">Create your device</h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card bg-gradient-info card-img-holder text-white">
-                  <div class="card-body">
-                    <img  src="<?= base_url("assets/purple/assets/images/dashboard/circle.svg")?>"  class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Message Out <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-5"><?=$messages_count?></h2>
-                    <h6 class="card-text">Send all messages </h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card bg-gradient-success card-img-holder text-white">
-                  <div class="card-body">
-                    <img  src="<?= base_url("assets/purple/assets/images/dashboard/circle.svg")?>"  class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Message In <i class="mdi mdi-diamond mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-5">0</h2>
-                    <h6 class="card-text">Make everything easier</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-7 grid-margin stretch-card">
+            <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <div class="clearfix">
-                      <h4 class="card-title float-left">Visit And Sales Statistics</h4>
-                      <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>
-                    </div>
-                    <canvas id="visit-sale-chart" class="mt-4"></canvas>
+                   <div class="table-responsive">
+                     
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Number</th>
+                          <th>Name</th>
+                          <th>Instance Key</th>
+                          <th>Data</th>
+                          <th>Status</th>
+                          <th>Reg. Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <?php 
+
+                        $page = @$_GET['page'];
+                        $page2 = (int)$page + 1;
+                          $limit = 10;
+                          if(!@$page){
+                              $start = 0;
+                          }else{
+                              $start = $page * $limit;
+                              
+                          }
+                          
+                          if(($start+$limit) >= $devices_count){
+                              $buttonNext = '<a href="#" class="btn btn-sm">Finis</a>';
+                          }else{
+                              $buttonNext = '<a href="?page='.$page2.'" class="btn btn-sm">Next</a>';
+                          }
+  
+                          $i = $start ;
+                        
+                          foreach ($devices as $value) {
+                             
+                              $i += 1;
+                              $status = $value->status;
+                              $status_show = "";
+                              $btn_scan = "";
+                            
+                              if($status === "1"){
+                                $status_show = '<label class="badge badge-warning">UnPaired</label>';
+                                $btn_scan = '<a class="btn btn-primary btn-sm" href="./device/authqr/'.$value->id.'"><i class="mdi mdi-qrcode-scan icon"></i></a>';
+                              }else if($status === "2"){
+                                $status_show = '<label class="badge badge-info">Paired</label>';
+                                $btn_scan = '<a class="btn btn-danger btn-sm" href="./device/logout/'.$value->id.'">Logout</a>';
+                              }else{
+                                $status_show = '<label class="badge badge-danger">InActive</label>';
+                              }
+                              echo '<tr>
+                          <td>'.$i.'</td>
+                          <td>'.$value->device_name.'</td>
+                          <td>'.$value->api_key.'</td>
+                          <td class="text-danger"> '.$value->data.'</td>
+                          <td>'.$status_show.'</td>
+                          <td>'.$value->reg_date.'</td>
+                          <td>'. $btn_scan.'</td>
+                        </tr>';
+                          } ?>
+                      
+                       
+                      </tbody>
+                    </table>
+                    
+                   </div>
+                   <?=$buttonNext?>
                   </div>
                 </div>
               </div>
-              <div class="col-md-5 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Traffic Sources</h4>
-                    <canvas id="traffic-chart"></canvas>
-                    <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-           
-        
-           
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
@@ -197,7 +197,7 @@
             <div class="container-fluid clearfix">
               <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © kejarkoding.com 2021</span>
               <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Thanks to <a href="#" target="_blank">Allah Ta'ala </a> for Everiting</span>
-            </div>
+
           </footer>
           <!-- partial -->
         </div>

@@ -10,7 +10,10 @@ class Setting extends CI_Controller
 			redirect('auth/login');
 		}
         $this->load->model('setting_model');
-        
+		$data_user =$this->auth_model->current_user(); 
+        if($data_user->level !== "2"){
+            redirect('/dashboard');
+        }
 	}
  
     public function index()
@@ -27,7 +30,7 @@ class Setting extends CI_Controller
         
 		if($this->form_validation->run() == FALSE){
             $this->load->view('layouts/header',$data);
-             $this->load->view('setting/edit',$data);
+             $this->load->view('admin/setting/edit',$data);
                $this->load->view('layouts/footer');
                return;
 		}
