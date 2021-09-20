@@ -64,6 +64,10 @@ User Admin :
  - Username : client10@gmail.com
  - Password : client10
 
+ Discussion : 
+ - Telegram : https://t.me/whatsvapanelgateway
+ - Discord  : https://discord.gg/jUuanZ7V
+
  Article About WhatsApp Panel Gateway by Whatsva : 
 
  - https://kejarkoding.com/2021/09/16/panel-whatsapp-gateway-client/
