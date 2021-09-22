@@ -63,7 +63,8 @@ Group Events API
 - Invite Code Group
 - Leave Group
 
-* Coming Soon API
+
+Coming Soon API
 
 - Webhook [Cooming soon]
 - AutoReply [Cooming soon]
