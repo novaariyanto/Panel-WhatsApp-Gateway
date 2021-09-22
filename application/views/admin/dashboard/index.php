@@ -98,8 +98,8 @@
             <div class="row" id="proBanner">
               <div class="col-12">
                 <span class="d-flex align-items-center purchase-popup">
-                  <p>To use this application you need PANEL_KEY, we can get it on <a href="https://kejarkoding.com/shop/">Kejarkoding.com</a> <br><br>Join Telegram group <a href="https://t.me/whatsvapanelgateway">Link Group</a> </p>
-                  <a href="https://kejarkoding.com/shop/" target="_blank" class="btn download-button purchase-button ml-auto">GET PANEL KEY</a>
+                  <p>Let's join as a <b>merchant</b>, and get API access that can be sold again <br><br>Join Telegram group <a href="https://t.me/whatsvapanelgateway">Link Group</a> </p>
+                  <a href="https://wa.me/6285156345912?text=Halo, Saya ingin bergabung menjadi merchant" target="_blank" class="btn download-button purchase-button ml-auto">Join Merchant</a>
                   <i class="mdi mdi-close" id="bannerClose"></i>
                 </span>
               </div>
