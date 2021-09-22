@@ -35,10 +35,10 @@
 	                        <h1 class="hero-title mt-0">WhatsApp Gateway Panel Client</h1>
 	                        <p class="hero-paragraph">such as building Chat Bots, WhatsApp message notifications and much more.</p>
 	                        <div class="hero-cta">
-								<a class="button button-primary" href="<?=base_url('/index.php/login')?>">Get Access</a>
+								<a class="button button-primary" href="https://wa.me/6285156345912">Join Merchant</a>
 								<div class="lights-toggle">
 									<input id="lights-toggle" type="checkbox" name="lights-toggle" class="switch" checked="checked">
-									<label for="lights-toggle" class="text-xs"><span>Turn me <span class="label-text">dark</span></span></label>
+									<label for="lights-toggle" class="text-xs"><span>Turn me<span class="label-text">dark</span></span></label>
 								</div>
 							</div>
 						</div>
@@ -126,7 +126,7 @@
                             <h2 class="section-title mt-0">Get WhatsApp Gateway Panel</h2>
                             <p class="section-paragraph">Not completely free but we can build amazing things with this app</p>
 							<div class="cta-cta">
-								<a class="button button-primary" href="https://kejarkoding.com/shop">Buy it now</a>
+								<a class="button button-primary" href="https://wa.me/6285156345912">Join Merchant now</a>
 							</div>
 					    </div>
                     </div>
