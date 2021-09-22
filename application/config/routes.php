@@ -83,7 +83,34 @@ $route['api/sendListMessage'] = 'api/messages/sendListMessage';
 $route['api/sendButtonMessage'] = 'api/messages/sendButtonMessage';
 $route['api/sendButtonLinkMessage'] = 'api/messages/sendButtonLinkMessage';
 
+// Group Messaging
+$route['api/sendMessageTextGroup'] = 'api/group/sendMessageText';
+$route['api/sendImageUrlGroup'] = 'api/group/sendImageUrl';
+$route['api/sendDocumentUrlGroup'] = 'api/group/sendDocumentUrl';
+$route['api/sendVideoUrlGroup'] = 'api/group/sendVideoUrl';
+$route['api/sendLocationGroup'] = 'api/group/sendLocation';
+$route['api/sendVCardGroup'] = 'api/group/sendVCard';
+$route['api/sendListMessageGroup'] = 'api/group/sendListMessage';
+$route['api/sendButtonMessageGroup'] = 'api/group/sendButtonMessage';
+$route['api/sendButtonLinkMessage'] = 'api/group/sendButtonLinkMessage';
+// End group Messaging
 
+// Group Event
+
+$route['api/createGroup'] = 'api/group/createGroup';
+$route['api/makeAdminGroup'] = 'api/group/makeAdminGroup';
+$route['api/demoteAdminGroup'] = 'api/group/demoteAdminGroup';
+$route['api/addParticipants'] = 'api/group/addParticipants';
+$route['api/removeParticipants'] = 'api/group/removeParticipants';
+$route['api/updateSubjectGroup'] = 'api/group/updateSubjectGroup';
+$route['api/updateDescriptionGroup'] = 'api/group/updateDescriptionGroup';
+$route['api/leaveGroup'] = 'api/group/leaveGroup';
+$route['api/inviteCode'] = 'api/group/inviteCode';
+$route['api/listParticipants'] = 'api/group/listParticipants';
+$route['api/groupInfo'] = 'api/group/groupInfo';
+$route['api/listGroup'] = 'api/group/listGroup';
+
+// End Group Event
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

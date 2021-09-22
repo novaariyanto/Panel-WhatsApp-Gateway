@@ -13,8 +13,8 @@ class Whatsva
 
     public function ws_url()
     {
-        // return "http://localhost:8081";
-        return "https://multidevice.whatsva.com";
+        return "http://localhost:8081";
+        // return "https://multidevice.whatsva.com";
     }
     public function some_method()
     {
@@ -84,7 +84,6 @@ class Whatsva
             , "panel_key" => $panel_key];
         return $this->curlData($this->ws_url() . "/api/sendDocumentUrl", $data);
     }
-
     public function sendVideoUrl($instance_key, $jid, $videoUrl, $caption, $panel_key)
     {
         $data = [
@@ -157,9 +156,219 @@ class Whatsva
     }
     // End Messaging
 
+    // Group Messaging 
+
+    public function sendMessageTextGroup($instance_key, $jid_group, $message, $panel_key)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "message" => $message
+            , "panel_key" => $panel_key];
+        return $this->curlData($this->ws_url() . "/api/sendMessageTextGroup", $data);
+    }
+    public function sendImageUrlGroup($instance_key, $jid_group, $imageUrl, $caption, $panel_key)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "imageUrl" => $imageUrl,
+            "caption" => $caption
+            , "panel_key" => $panel_key];
+        return $this->curlData($this->ws_url() . "/api/sendImageUrlGroup", $data);
+    }
+    public function sendDocumentUrlGroup($instance_key, $jid_group, $documentUrl, $panel_key)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "documentUrl" => $documentUrl
+            , "panel_key" => $panel_key];
+        return $this->curlData($this->ws_url() . "/api/sendDocumentUrlGroup", $data);
+    }
+    public function sendVideoUrlGroup($instance_key, $jid_group, $videoUrl, $caption, $panel_key)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "videoUrl" => $videoUrl,
+            "caption" => $caption
+            , "panel_key" => $panel_key];
+        return $this->curlData($this->ws_url() . "/api/sendVideoUrlGroup", $data);
+    }
+    public function sendLocationGroup($instance_key, $jid_group, $lat, $long, $panel_key)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "coordinates" => [
+                "lat" => $lat,
+                "long" => $long,
+            ], "panel_key" => $panel_key];
+        return $this->curlData($this->ws_url() . "/api/sendLocationGroup", $data);
+    }
+    public function sendVCardGroup($instance_key, $jid_group, $fullname, $organization, $phoneNumber, $panel_key)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "fullname" => $fullname,
+            "organization" => $organization,
+            "phoneNumber" => $phoneNumber
+            , "panel_key" => $panel_key];
+        return $this->curlData($this->ws_url() . "/api/sendVCardGroup", $data);
+    }
+    public function sendListMessageGroup($instance_key, $jid_group, $buttonText, $description, $sectionTitle, $listMessage, $panel_key)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "buttonText" => $buttonText,
+            "description" => $description,
+            "sections" => [[
+                "title" => $sectionTitle,
+                "rows" => $listMessage,
+            ]]
+            , "panel_key" => $panel_key];
+
+        return $this->curlData($this->ws_url() . "/api/sendListMessageGroup", $data);
+    }
+    public function sendButtonMessageGroup($instance_key, $jid_group, $contentText, $footerText, $buttons, $panel_key)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "contentText" => $contentText,
+            "footerText" => $footerText,
+            "buttons" => $buttons
+            , "panel_key" => $panel_key];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/sendButtonMessageGroup", $data);
+    }
+    public function sendButtonLinkMessageGroup($instance_key, $jid_group, $content, $buttons, $panel_key)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "content" => $content,
+            "buttons" => $buttons
+            , "panel_key" => $panel_key];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/sendButtonUrlMessagesGroup", $data);
+    }
+
+
+
+    // End Group Messaging
+
     // Group Event
 
-    
+    public function createGroup($instance_key, $groupName, $participants)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "groupName" => $groupName,
+            "participants" => $participants];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/createGroup", $data);
+    }
+    public function makeAdminGroup($instance_key, $jid_group, $participants)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "participants" => $participants];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/makeAdminGroup", $data);
+    }
+    public function demoteAdminGroup($instance_key, $jid_group, $participants)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "participants" => $participants];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/demoteAdminGroup", $data);
+    }
+    public function addParticipants($instance_key, $jid_group, $participants)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "participants" => $participants];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/addParticipants", $data);
+    }
+    public function removeParticipants($instance_key, $jid_group, $participants)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "participants" => $participants];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/removeParticipants", $data);
+    }
+
+    public function updateSubjectGroup($instance_key, $jid_group, $subject)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "groupName" => $subject];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/setGroupName", $data);
+    }
+
+    public function updateDescriptionGroup($instance_key, $jid_group, $description)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group,
+            "description" => $description];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/updateDescriptionGroup", $data);
+    }
+
+    public function leaveGroup($instance_key, $jid_group)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/leaveGroup", $data);
+    }
+    public function inviteCode($instance_key, $jid_group)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/inviteCode", $data);
+    }
+    public function listParticipants($instance_key, $jid_group)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/listParticipants", $data);
+    }
+    public function groupInfo($instance_key, $jid_group)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid_group" => $jid_group];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/listParticipants", $data);
+    }
+
+    public function listGroup($instance_key)
+    {
+        $data = [
+            "instance_key" => $instance_key ];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/listGroup", $data);
+    }
 
     // End Group Event
     
