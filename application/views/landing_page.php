@@ -38,10 +38,10 @@
 								<a class="button button-primary" href="https://wa.me/6285156345912?text=Halo, Saya ingin bergabung menjadi merchant">Join Merchant</a>
 								<a class="button button-info" href="<?=base_url('index.php/register')?>">Try Demo</a>
 								
-                                <div class="lights-toggle">
+                                <!-- <div class="lights-toggle">
 									<input id="lights-toggle" type="checkbox" name="lights-toggle" class="switch" checked="checked">
 									<label for="lights-toggle" class="text-xs"><span>Turn me<span class="label-text">dark</span></span></label>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						<div class="hero-media">
