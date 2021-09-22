@@ -94,10 +94,16 @@ class Device extends CI_Controller
         if (count((array) $data_device)) {
             $qr = $this->whatsva->resetInstance($data_device->api_key,$datasetting->panel_key);
             $qr = json_decode($qr);
-            if ($qr->success) {
-				$updateStatus = $this->device_model->update(["status" => 1], $data_device->id);
+            if($qr){
+                if ($qr->success) {
+                    $updateStatus = $this->device_model->update(["status" => 1], $data_device->id);
+                    redirect('./device');
+                }
+            }else{
+                // echo json_encode(["success"=>false,"message"=>"can't connect server"]);
                 redirect('./device');
             }
+           
         }
     }
     public function authQr($device)

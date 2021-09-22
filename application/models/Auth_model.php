@@ -20,28 +20,10 @@ class Auth_model extends CI_Model
 			]
 		];
 	}
-	public function rules2()
-	{
-		return [
-			[
-				'field' => 'username',
-				'label' => 'Username or Email',
-				'rules' => 'required'
-			],	[
-				'field' => 'email',
-				'label' => 'Email',
-				'rules' => 'required|max_length[255]'
-			],
-			[
-				'field' => 'password',
-				'label' => 'Password',
-				'rules' => 'required|max_length[255]'
-			]
-		];
-	}
+
     public function login($username, $password)
 	{
-		$this->db->where('email', $username)->or_where('username', $username);
+		$this->db->where(['email'=> $username,"status"=>"1"])->or_where(['username'=> $username]);
 		$query = $this->db->get($this->_table);
 		$user = $query->row();
 

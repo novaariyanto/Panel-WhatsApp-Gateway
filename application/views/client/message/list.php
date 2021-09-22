@@ -170,7 +170,7 @@
                                   $message = json_decode($value->message);
                                   $amessage = (array)$message;
                                   $b = array_keys($amessage);
-                                  $message = $b[0];
+                                  $message = @$b[0];
                                
                                 
                                 }
