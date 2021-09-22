@@ -92,7 +92,7 @@ $route['api/sendLocationGroup'] = 'api/group/sendLocation';
 $route['api/sendVCardGroup'] = 'api/group/sendVCard';
 $route['api/sendListMessageGroup'] = 'api/group/sendListMessage';
 $route['api/sendButtonMessageGroup'] = 'api/group/sendButtonMessage';
-$route['api/sendButtonLinkMessage'] = 'api/group/sendButtonLinkMessage';
+$route['api/sendButtonLinkMessageGroup'] = 'api/group/sendButtonLinkMessage';
 // End group Messaging
 
 // Group Event
