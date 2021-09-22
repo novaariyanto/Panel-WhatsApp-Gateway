@@ -35,6 +35,6 @@ class Auth extends CI_Controller
 	{
 		$this->load->model('auth_model');
 		$this->auth_model->logout();
-		redirect(site_url('/auth/login'));
+		redirect(site_url('/login'));
 	}
 }

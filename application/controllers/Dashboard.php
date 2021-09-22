@@ -7,7 +7,7 @@ class Dashboard extends CI_Controller
 		parent::__construct();
 		$this->load->model('auth_model');
 		if(!$this->auth_model->current_user()){
-			redirect('auth/login');
+			redirect('/login');
 		}
         $this->load->model('setting_model');
         $this->load->model('messages_model');

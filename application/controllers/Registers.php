@@ -24,7 +24,7 @@ class Registers extends CI_Controller
 	
 		if($this->register_model->register($username,$email, $password)){
 			$this->session->set_flashdata('message_register_success', 'Register has been successful, You can login now!');
-			redirect('login');
+			redirect('/login');
 		} else {
 			$this->session->set_flashdata('message_login_error', 'Register failure!');
 		}
