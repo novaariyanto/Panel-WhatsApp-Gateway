@@ -18,13 +18,18 @@ class Devices extends CI_Controller
         if ($data_device) {
             $data = $this->whatsva->instancecData($data_device->api_key,$datasetting->panel_key);
             $data = json_decode($data);
-            if ($data->success) {
-                if ($data->data->instance_status === "connected") {
-                    $updateStatus = $this->device_model->update(["status" => 2], $data_device->id);
+            if($data){
+                if ($data->success) {
+                    if ($data->data->instance_status === "connected") {
+                        $updateStatus = $this->device_model->update(["status" => 2], $data_device->id);
+                    }
+                    echo json_encode($data);
+    
                 }
-                echo json_encode($data);
-
+            }else{
+                echo json_encode(["success"=>false,"message"=>"cant connect to server"]);
             }
+          
 
         }
     }

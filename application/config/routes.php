@@ -81,6 +81,8 @@ $route['api/sendLocation'] = 'api/messages/sendLocation';
 $route['api/sendVCard'] = 'api/messages/sendVCard';
 $route['api/sendListMessage'] = 'api/messages/sendListMessage';
 $route['api/sendButtonMessage'] = 'api/messages/sendButtonMessage';
+$route['api/sendButtonLinkMessage'] = 'api/messages/sendButtonLinkMessage';
+
 
 
 $route['default_controller'] = 'welcome';

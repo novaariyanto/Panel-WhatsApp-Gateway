@@ -1,17 +1,34 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Whatsva
+class Whatsva 
 {
+    private $_CI;
+    public function __construct()
+    {
+        $this->_CI = & get_instance();
+        $this->_CI->load->model('setting_model','sm');
+    }
+
+
     public function ws_url()
     {
-    
-        return "https://multidevice.whatsva.com";
+        return "http://localhost:8081";
+        // return "https://multidevice.whatsva.com";
     }
     public function some_method()
     {
         return $this->ws_url();
 
+    }
+    public function initInstance($device_name,$panel_key)
+    {
+        $data = [
+			"instance_name"=> $device_name,
+			"panel_key"=>$panel_key
+		];
+        $this->ws_url()."/api/initInstance";
+        return $this->curlData($this->ws_url() . "/api/initInstance", $data);
     }
     // Instance Data
     public function instancecData($instance_key, $panel_key)
@@ -36,6 +53,8 @@ class Whatsva
         return $this->curlData($this->ws_url() . "/api/instanceReset", $data);
     }
     // End Instance
+
+
     // Messaging
     public function sendMessageText($instance_key, $jid, $message, $panel_key)
     {
@@ -125,11 +144,34 @@ class Whatsva
         // echo json_encode($data);
         return $this->curlData($this->ws_url() . "/api/sendButtonMessage", $data);
     }
-
+    public function sendButtonLinkMessage($instance_key, $jid, $content, $buttons, $panel_key)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid" => $jid,
+            "content" => $content,
+            "buttons" => $buttons
+            , "panel_key" => $panel_key];
+        // echo json_encode($data);
+        return $this->curlData($this->ws_url() . "/api/sendButtonUrlMessages", $data);
+    }
     // End Messaging
 
+    // Group Event
+
+    
+
+    // End Group Event
+    
+    
+    // Core of the Core
     public function curlData($url, $data)
     {
+        $datasetting = $this->_CI->sm->getSetting();
+        
+        // array_push($data);
+        $data['panel_key'] = $datasetting->panel_key;
+
         $curl = curl_init();
 
         $payload = json_encode($data);
@@ -143,4 +185,5 @@ class Whatsva
         return $result;
 
     }
+    // End Core of the Core
 }

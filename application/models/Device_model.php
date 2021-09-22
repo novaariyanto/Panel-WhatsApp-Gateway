@@ -20,22 +20,15 @@ class Device_model extends CI_Model
 		
 		echo "auth";
 	}
-	public function ws_url()
-    {
-    
-        return "https://multidevice.whatsva.com";
-    }
+
     public function add($device_name, $panel_key)
     {
+        $this->load->library('whatsva');
         $data_user = $this->auth_model->current_user();
         $username = str_replace(' ', '_', $data_user->username);
 
-		$curlData = $this->ws_url()."/api/initInstance";
-		$data = [
-			"instance_name"=> $username."_".$device_name,
-			"panel_key"=>$panel_key
-		];
-		$gettinData = json_decode($this->curlData($curlData,$data));
+
+		$gettinData = json_decode($this->whatsva->initInstance($username."_".$device_name,$panel_key));
 	    if (!$this->session->has_userdata(self::SESSION_KEY)) {
             return null;
         }
@@ -58,21 +51,7 @@ class Device_model extends CI_Model
 			return FALSE;
 		}
     }
-    public function curlData($url,$data)
-    {
-        $curl = curl_init();
-       
-        $payload = json_encode($data);
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        curl_close($ch);
-       return $result;
-
-    }
+  
     public function getCount()
 	{
         if (!$this->session->has_userdata(self::SESSION_KEY)) {

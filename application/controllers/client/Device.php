@@ -110,22 +110,26 @@ class Device extends CI_Controller
         if (count((array) $data_device)) {
             $qr = $this->whatsva->generatedQr($data_device->api_key,$datasetting->panel_key);
             $qr = json_decode($qr);
-         
-            if ($qr->success) {
-                $qrCode = $qr->data->qr;
-
-            } else {
-                if ($qr->message === "Paired device") {
-                    redirect('./device');
-                } else if ($qr->message === "The qr code has been generated, please scan it with your whatsapp account") {
-                    // print_r($qr);
-                    // die;
+            if($qr){
+                if ($qr->success) {
+                    $qrCode = $qr->data->qr;
+    
                 } else {
-                    // print_r($qr);
-                    // die;
+                    if ($qr->message === "Paired device") {
+                        redirect('./device');
+                    } else if ($qr->message === "The qr code has been generated, please scan it with your whatsapp account") {
+                        // print_r($qr);
+                        // die;
+                    } else {
+                        // print_r($qr);
+                        // die;
+                    }
+    
                 }
-
+            }else{
+                echo json_encode(["success"=>false,"message"=>"cant connect to server"]);
             }
+            
         } else {
             redirect('./device');
         }
