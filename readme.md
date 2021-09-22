@@ -21,13 +21,49 @@ New Features
 
 *  Support WhatsApp Beta Multi-Device
 
-Feature :
+List API Available :
 
-- Send Message Text
-- Send Image URL
-- Send Document URL
-- Send List Message WhatsApp
-- Send Button Message WhatsApp
+* Messaging API
+- Send Message Text 
+- Send Image Url 
+- Send Video Url 
+- Send Document Url 
+- Send Location 
+- Send VCard 
+- Send List Message 
+- Send Button Message 
+- Send Button Link Message 
+
+
+* Group Messaging API
+
+- Send Message Text to Group
+- Send Image Url to Group
+- Send Video Url to Group
+- Send Document Url to Group
+- Send Location to Group
+- Send VCard to Group
+- Send List Message to Group
+- Send Button Message to Group
+- Send Button Link Message to Group
+
+* Group Events API
+
+- List Group
+- Create Group
+- Group Info
+- Update Subject/Name Group
+- Update Group Description
+- Make Admin Group
+- Demote Admin Group
+- List of Participants Group
+- Add Participants Group
+- Remove Participants Group
+- Invite Code Group
+- Leave Group
+
+* Coming Soon API
+
 - Webhook [Cooming soon]
 - AutoReply [Cooming soon]
 - Schedule [Cooming soon]
