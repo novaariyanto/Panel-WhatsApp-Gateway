@@ -92,6 +92,8 @@ Installation
 
 -  `but you need the panel key to be able to fully run the application` 
 
+************
+
 * Application Demo : https://whatsva.id
 * API Documentation : https://documenter.getpostman.com/view/6198796/U16opPKp
 
@@ -103,6 +105,7 @@ User Admin :
  - Username : client10@gmail.com
  - Password : client10
 
+************
 
  *******
  Forum Discussion : 
