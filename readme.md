@@ -23,7 +23,8 @@ New Features
 
 List API Available :
 
-* Messaging API
+Messaging API
+
 - Send Message Text 
 - Send Image Url 
 - Send Video Url 
@@ -35,7 +36,7 @@ List API Available :
 - Send Button Link Message 
 
 
-* Group Messaging API
+Group Messaging API
 
 - Send Message Text to Group
 - Send Image Url to Group
@@ -47,7 +48,7 @@ List API Available :
 - Send Button Message to Group
 - Send Button Link Message to Group
 
-* Group Events API
+Group Events API
 
 - List Group
 - Create Group
