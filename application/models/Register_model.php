@@ -42,6 +42,7 @@ class Register_model extends CI_Model
 			'username'=>$username,
 			'email'=>$email,
 			'password'=> password_hash($password,PASSWORD_DEFAULT),
+			'status'=> '1',
 			'level' => '1'
 		];
 		// bikin session
