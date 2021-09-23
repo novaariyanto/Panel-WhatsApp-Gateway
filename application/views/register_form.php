@@ -64,7 +64,7 @@
                   <div class="mt-3">
                   <input type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="#" value="SIGN UP"></input>
                   </div>
-                  <div class="text-center mt-4 font-weight-light"> Already have an account? <a href="<?=base_url('/login')?>" class="text-primary">Login</a>
+                  <div class="text-center mt-4 font-weight-light"> Already have an account? <a href="<?=base_url('index.php/login')?>" class="text-primary">Login</a>
                   </div>
                 </form>
               </div>

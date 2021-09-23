@@ -83,7 +83,7 @@
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="<?=base_url('/message')?>">
+              <a class="nav-link" href="<?=base_url('index.php/message')?>">
                 <span class="menu-title">Message</span>
                 <i class="mdi mdi-message-text menu-icon"></i>
               </a>
