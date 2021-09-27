@@ -62,12 +62,12 @@ Group Events API
 - Remove Participants Group
 - Invite Code Group
 - Leave Group
-
+- Webhook [New]
+- AutoReply [New]
 
 Coming Soon API
 
-- Webhook [Cooming soon]
-- AutoReply [Cooming soon]
+
 - Schedule [Cooming soon]
 - etc.
 
@@ -97,9 +97,7 @@ Installation
 * Application Demo : https://whatsva.id
 * API Documentation : https://documenter.getpostman.com/view/6198796/U16opPKp
 
-User Admin : 
- - Username : admin@gmail.com
- - Password : admin
+
 
  User Client : 
  - Username : client10@gmail.com
