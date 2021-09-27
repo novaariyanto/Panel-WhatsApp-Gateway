@@ -114,7 +114,7 @@ class Autoreply extends CI_Controller
     public function delete($id)
     {
         if ($this->autoreply_model->delete($id)) {
-            redirect('./webhook');
+            redirect('./autoreply');
         }
       
     }
