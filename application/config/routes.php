@@ -60,6 +60,16 @@ $route['user/add'] = 'admin/user/add';
 $route['user/insert'] = 'admin/user/insert';
 $route['user/delete/(:any)'] = 'admin/user/delete/$1';
 
+$route['webhook'] = 'client/webhook';
+$route['webhook/add'] = 'client/webhook/add';
+$route['webhook/(:any)'] = 'client/webhook/edit/$1';
+$route['webhook/delete/(:any)'] = 'client/webhook/delete/$1';
+
+$route['autoreply'] = 'client/autoreply';
+$route['autoreply/add'] = 'client/autoreply/add';
+$route['autoreply/(:any)'] = 'client/autoreply/edit/$1';
+$route['autoreply/delete/(:any)'] = 'client/autoreply/delete/$1';
+
 $route['device'] = 'client/device';
 $route['device/add'] = 'client/device/add';
 $route['device/insert'] = 'client/device/insert';
@@ -111,6 +121,10 @@ $route['api/groupInfo'] = 'api/group/groupInfo';
 $route['api/listGroup'] = 'api/group/listGroup';
 
 // End Group Event
+
+// io service
+$route['io'] = 'io/service';
+// end io service
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

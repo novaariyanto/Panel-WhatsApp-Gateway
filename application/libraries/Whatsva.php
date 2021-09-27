@@ -13,6 +13,7 @@ class Whatsva
 
     public function ws_url()
     {
+       
         return "https://multidevice.whatsva.com";
     }
     public function some_method()
@@ -379,6 +380,7 @@ class Whatsva
         
         // array_push($data);
         $data['panel_key'] = $datasetting->panel_key;
+        $data['panel_domain'] = $datasetting->domain;
 
         $curl = curl_init();
 

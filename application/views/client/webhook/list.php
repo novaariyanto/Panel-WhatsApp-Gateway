@@ -76,7 +76,7 @@
               </a>
             </li>
          
-            <li class="nav-item active">
+            <li class="nav-item ">
               <a class="nav-link" href="<?=base_url("index.php/device")?>">
                 <span class="menu-title">Device</span>
                 <i class="mdi mdi-cellphone-iphone menu-icon"></i>
@@ -88,11 +88,12 @@
                 <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
-      <li class="nav-item">
-              <a class="nav-link" href="<?=base_url('index.php/webhook')?>">
+
+            <li class="nav-item active">
+              <a class="nav-link" href="<?=base_url("index.php/webhook")?>" >
                 <span class="menu-title">Webhook</span>
                 <i class="mdi mdi-access-point menu-icon"></i>
-                </a>
+              </a>
             </li>
   <li class="nav-item">
               <a class="nav-link" href="<?=base_url('index.php/autoreply')?>">
@@ -100,14 +101,14 @@
                 <i class="mdi mdi-reply  menu-icon"></i>
               </a>
             </li>
-         
+           
             <li class="nav-item">
               <a class="nav-link" href="https://documenter.getpostman.com/view/6198796/U16opPKp" target="_blank">
                 <span class="menu-title">Documentation</span>
                 <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
-           
+          
            
           </ul>
         </nav>
@@ -117,36 +118,80 @@
             
             <div class="page-header">
               <h3 class="page-title">
-                </span> Device
+                </span> Webhook
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Device</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Add</li>
+                <li class="breadcrumb-item"><a href="#">Webhook</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">List</li>
                 </ul>
               </nav>
             </div>
+            <a href="<?=base_url('/index.php/webhook/add')?>" class="btn btn-sm btn-primary" style="margin-top:-35px;margin-right:-4px" >Add </a>
+          
             <div class="row">
-            <div class="col-md-6 grid-margin stretch-card">
+            <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                  <form class="forms-sample" method="post" action="">
-                      <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Device Name <br> <span style="color:red"> <?= form_error('device_name') ?> <?php echo $this->session->flashdata('message_add_device_error'); ?></span></label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control"  name="device_name" id="exampleInputUsername2" placeholder="ex : Device A" value="">
-                         
-                      </div>
-                    
-                         </div>
+                   <div class="table-responsive">
+                     
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Number</th>
+                          <th>Device</th>
+                          <th>Url Webhook</th>
+                        
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <?php 
+
+                        $page = @$_GET['page'];
+                        $page2 = (int)$page + 1;
+                          $limit = 10;
+                          if(!@$page){
+                              $start = 0;
+                          }else{
+                              $start = $page * $limit;
+                              
+                          }
+                          
+                          if(($start+$limit) >= $devices_count){
+                              $buttonNext = '<a href="#" class="btn btn-sm">Finis</a>';
+                          }else{
+                              $buttonNext = '<a href="?page='.$page2.'" class="btn btn-sm">Next</a>';
+                          }
+  
+                          $i = $start ;
+                        
+                          foreach ($devices as $value) {
+                             
+                              $i += 1;
+                              $status = $value->status;
+                              $status_show = "";
+                              $btn_scan = "";
+                            
+                             
+                              echo '<tr>
+                          <td>'.$i.'</td>
+                          <td>'.$value->device_name.'</td>
+                          <td>'.$value->url.'</td>                     
+                     
+                          <td><a href="'.base_url("index.php/webhook/".$value->id).'" class="btn btn-sm btn-info">Edit</a><br><a href="'.base_url("index.php/webhook/delete/".$value->id).'" class="btn btn-sm btn-danger">Delete</a></td>
+                        </tr>';
+                          } ?>
                       
-                      <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
-                    </form>
-              
+                       
+                      </tbody>
+                    </table>
+                    
+                   </div>
+                   <?=$buttonNext?>
                   </div>
                 </div>
               </div>
-            </div>
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->

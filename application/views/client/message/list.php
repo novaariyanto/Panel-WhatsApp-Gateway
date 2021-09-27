@@ -85,10 +85,21 @@
             <li class="nav-item active">
               <a class="nav-link" href="<?=base_url('index.php/message')?>">
                 <span class="menu-title">Message</span>
-                <i class="mdi mdi-message-text menu-icon"></i>
+                <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
-          
+               <li class="nav-item">
+              <a class="nav-link" href="<?=base_url('index.php/webhook')?>">
+                <span class="menu-title">Webhook</span>
+                <i class="mdi mdi-access-point menu-icon"></i>
+                </a>
+            </li>
+  <li class="nav-item">
+              <a class="nav-link" href="<?=base_url('index.php/autoreply')?>">
+                <span class="menu-title">Autoreply</span>
+                <i class="mdi mdi-reply  menu-icon"></i>
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="https://documenter.getpostman.com/view/6198796/U16opPKp" target="_blank">
                 <span class="menu-title">Documentation</span>

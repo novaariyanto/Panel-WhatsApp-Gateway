@@ -85,10 +85,21 @@
             <li class="nav-item active">
               <a class="nav-link" href="<?=base_url('index.php/message')?>">
                 <span class="menu-title">Message</span>
-                <i class="mdi mdi-message-text menu-icon"></i>
+                <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
-          
+               <li class="nav-item">
+              <a class="nav-link" href="<?=base_url('index.php/webhook')?>">
+                <span class="menu-title">Webhook</span>
+                <i class="mdi mdi-access-point menu-icon"></i>
+                </a>
+            </li>
+  <li class="nav-item">
+              <a class="nav-link" href="<?=base_url('index.php/autoreply')?>">
+                <span class="menu-title">Autoreply</span>
+                <i class="mdi mdi-reply  menu-icon"></i>
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="https://documenter.getpostman.com/view/6198796/U16opPKp" target="_blank">
                 <span class="menu-title">Documentation</span>
@@ -124,12 +135,12 @@
                         <div class="col-sm-9">
                             <select name="instance_key" id="" class="form-control" required>
                                 <option value="">Select Device</option>
-                            <?php 
-                            foreach ($devices as $key => $value) {
-                                if($value->status === "2"){
-                                ?>
-                            <option value="<?=$value->api_key?>"><?=$value->device_name?></option>
-                                <?php } }?>
+                                <?php
+                                  foreach ($devices as $key => $value) {
+                                      if ($value->status === "2") {
+                                          ?>
+                                <option value="<?=$value->api_key?>"><?=$value->device_name?></option>
+                                <?php }}?>
                         </select>
                           <!-- <input type="text" class="form-control"  name="device_name" id="exampleInputUsername2" placeholder="ex : Device A" value=""> -->
 
@@ -145,7 +156,7 @@
                        <div class="form-group row">
                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Message<br> <span style="color:red"> <?=form_error('device_name')?> <?php echo $this->session->flashdata('message_add_device_error'); ?></span></label>
                         <div class="col-sm-9">
-                        
+
                         <textarea name="message" id="message" cols="1" rows="3" class="form-control" placeholder="hello" required></textarea>
                         </div>
                        </div>

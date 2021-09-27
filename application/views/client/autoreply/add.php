@@ -22,28 +22,28 @@
             </form>
           </div>
           <ul class="navbar-nav navbar-nav-right">
-           
+
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link">
                 <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
               </a>
             </li>
-           
+
             <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
                 <i class="mdi mdi-bell-outline"></i>
-              
+
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
                 <h6 class="p-3 mb-0">Notifications</h6>
-               
-               
+
+
               </div>
             </li>
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="<?=  base_url("assets/purple/assets/images/faces/face1.jpg")?>" alt="image">
+                  <img src="<?=base_url("assets/purple/assets/images/faces/face1.jpg")?>" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
@@ -51,7 +51,7 @@
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-             
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?=base_url("index.php/auth/logout")?>">
                   <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
@@ -68,15 +68,15 @@
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
-            
+
             <li class="nav-item">
               <a class="nav-link" href="<?=base_url("index.php/dashboard")?>">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
-         
-            <li class="nav-item active">
+
+            <li class="nav-item ">
               <a class="nav-link" href="<?=base_url("index.php/device")?>">
                 <span class="menu-title">Device</span>
                 <i class="mdi mdi-cellphone-iphone menu-icon"></i>
@@ -88,40 +88,39 @@
                 <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
-      <li class="nav-item">
+   <li class="nav-item ">
               <a class="nav-link" href="<?=base_url('index.php/webhook')?>">
                 <span class="menu-title">Webhook</span>
                 <i class="mdi mdi-access-point menu-icon"></i>
-                </a>
+              </a>
             </li>
-  <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="<?=base_url('index.php/autoreply')?>">
                 <span class="menu-title">Autoreply</span>
                 <i class="mdi mdi-reply  menu-icon"></i>
               </a>
             </li>
-         
             <li class="nav-item">
               <a class="nav-link" href="https://documenter.getpostman.com/view/6198796/U16opPKp" target="_blank">
                 <span class="menu-title">Documentation</span>
                 <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
-           
-           
+
+
           </ul>
         </nav>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            
+
             <div class="page-header">
               <h3 class="page-title">
-                </span> Device
+                </span> Autoreply
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Device</a></li>
+                <li class="breadcrumb-item"><a href="#">Autoreply</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Add</li>
                 </ul>
               </nav>
@@ -131,18 +130,47 @@
                 <div class="card">
                   <div class="card-body">
                   <form class="forms-sample" method="post" action="">
-                      <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Device Name <br> <span style="color:red"> <?= form_error('device_name') ?> <?php echo $this->session->flashdata('message_add_device_error'); ?></span></label>
+                  <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Device<br> <span style="color:red"> <?=form_error('device_name')?> <?php echo $this->session->flashdata('message_add_device_error'); ?></span></label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control"  name="device_name" id="exampleInputUsername2" placeholder="ex : Device A" value="">
-                         
+                            <select name="instance_key" id="" class="form-control" required>
+                                <option value="">Select Device</option>
+                                <?php
+foreach ($devices as $key => $value) {
+
+    ?>
+                                <option value="<?=$value->api_key?>"><?=$value->device_name?></option>
+                                <?php }?>
+                        </select>
+                          <!-- <input type="text" class="form-control"  name="device_name" id="exampleInputUsername2" placeholder="ex : Device A" value=""> -->
+
+                        </div>
+                       </div>
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Receive<br> <span style="color:red"> <?=form_error('receive')?> <?php echo $this->session->flashdata('message_add_webhook_error'); ?></span></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control"  name="receive" id="exampleInputUsername2" placeholder="ex : !hello" value="">
+                        </div>
                       </div>
-                    
-                         </div>
-                      
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Reply<br> <span style="color:red"> <?=form_error('reply')?> <?php echo $this->session->flashdata('message_add_webhook_error'); ?></span></label>
+                        <div class="col-sm-9">
+                          <textarea type="text" class="form-control"  name="reply" id="exampleInputUsername2" placeholder="ex : hello to" value=""></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Type<br> <span style="color:red"> <?=form_error('reply')?> <?php echo $this->session->flashdata('message_add_webhook_error'); ?></span></label>
+                        <div class="col-sm-9">
+                          <select name="type" id="" class="form-control">
+                            <option value="1">Private Message</option>
+                            <option value="2">All Message</option>
+                          </select>
+                         
+                        </div>
+                      </div>
                       <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
                     </form>
-              
+
                   </div>
                 </div>
               </div>

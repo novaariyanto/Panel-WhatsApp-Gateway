@@ -118,7 +118,7 @@ class Device extends CI_Controller
             $qr = json_decode($qr);
             if($qr){
                 if ($qr->success) {
-                    $qrCode = $qr->data->qr;
+              
     
                 } else {
                     if ($qr->message === "Paired device") {

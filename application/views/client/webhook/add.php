@@ -76,7 +76,7 @@
               </a>
             </li>
          
-            <li class="nav-item active">
+            <li class="nav-item ">
               <a class="nav-link" href="<?=base_url("index.php/device")?>">
                 <span class="menu-title">Device</span>
                 <i class="mdi mdi-cellphone-iphone menu-icon"></i>
@@ -88,19 +88,18 @@
                 <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
-      <li class="nav-item">
+   <li class="nav-item active">
               <a class="nav-link" href="<?=base_url('index.php/webhook')?>">
                 <span class="menu-title">Webhook</span>
                 <i class="mdi mdi-access-point menu-icon"></i>
-                </a>
+              </a>
             </li>
-  <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="<?=base_url('index.php/autoreply')?>">
                 <span class="menu-title">Autoreply</span>
                 <i class="mdi mdi-reply  menu-icon"></i>
               </a>
             </li>
-         
             <li class="nav-item">
               <a class="nav-link" href="https://documenter.getpostman.com/view/6198796/U16opPKp" target="_blank">
                 <span class="menu-title">Documentation</span>
@@ -117,11 +116,11 @@
             
             <div class="page-header">
               <h3 class="page-title">
-                </span> Device
+                </span> Webhook
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Device</a></li>
+                <li class="breadcrumb-item"><a href="#">Webhook</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Add</li>
                 </ul>
               </nav>
@@ -131,10 +130,26 @@
                 <div class="card">
                   <div class="card-body">
                   <form class="forms-sample" method="post" action="">
-                      <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Device Name <br> <span style="color:red"> <?= form_error('device_name') ?> <?php echo $this->session->flashdata('message_add_device_error'); ?></span></label>
+                  <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Device<br> <span style="color:red"> <?=form_error('device_name')?> <?php echo $this->session->flashdata('message_add_device_error'); ?></span></label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control"  name="device_name" id="exampleInputUsername2" placeholder="ex : Device A" value="">
+                            <select name="instance_key" id="" class="form-control" required>
+                                <option value="">Select Device</option>
+                                <?php
+                                  foreach ($devices as $key => $value) {
+                                    
+                                          ?>
+                                <option value="<?=$value->api_key?>"><?=$value->device_name?></option>
+                                <?php }?>
+                        </select>
+                          <!-- <input type="text" class="form-control"  name="device_name" id="exampleInputUsername2" placeholder="ex : Device A" value=""> -->
+
+                        </div>
+                       </div>
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Webhook Url <br> <span style="color:red"> <?= form_error('url') ?> <?php echo $this->session->flashdata('message_add_webhook_error'); ?></span></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control"  name="webhook_url" id="exampleInputUsername2" placeholder="ex : https://webhook.site" value="">
                          
                       </div>
                     
