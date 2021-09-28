@@ -7,16 +7,16 @@ class MessageIn_model extends CI_Model
 
   
   
-    public function insert($externalId,$instance_key,$date_time,$pushname,$from_number,$type,$status_message,$message,$data_message,$receiver)
+    public function insert($externalId,$instance_key,$date_time,$pushname,$from_number,$type,$status_message,$message,$data_message)
 	{
         $data = [
 			'externalId'=>$externalId,
 			'instance_key' => $instance_key,
 			'date_time'   => $date_time,
 			'pushname' => $pushname,
-            'from_number'   => $from,
+            'from_number'   => $from_number,
             'type'=> $type,
-			'status_message' => $status,
+			'status_message' => $status_message,
             'message'=> $message,
 			'data_message'=>json_encode($data_message)
 		];
