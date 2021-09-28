@@ -77,8 +77,8 @@ $route['device/authqr/(:any)'] = 'client/device/authQr/$1';
 $route['device/detail/(:any)'] = 'client/device/getQR/$1';
 $route['device/logout/(:any)'] = 'client/device/logoutInstance/$1';
 
-$route['message'] = 'client/message';
-$route['message/add'] = 'client/message/add';
+$route['messageOut'] = 'client/message';
+$route['messageOut/add'] = 'client/message/add';
 
 $route['messageIn'] = 'client/messageIn';
 

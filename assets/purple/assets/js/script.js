@@ -45,7 +45,7 @@
 
 
     }
-    else if(url.includes("/message/add")){
+    else if(url.includes("/messageOut/add")){
    
         console.log('hello')
         function getFormData($form){

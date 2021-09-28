@@ -83,12 +83,12 @@
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="<?=base_url('index.php/message')?>">
-                <span class="menu-title">Message</span>
+              <a class="nav-link" href="<?=base_url('index.php/messageOut')?>">
+                <span class="menu-title">Message Out</span>
                 <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item">
               <a class="nav-link" href="<?=base_url('index.php/messageIn')?>">
                 <span class="menu-title">Message In</span>
                 <i class="mdi mdi-inbox menu-icon"></i>
@@ -135,7 +135,7 @@
               </nav>
               
             </div>
-           <a href="<?=base_url('/index.php/message/add')?>" class="btn btn-sm btn-primary" style="margin-top:-35px;margin-right:-4px" >Add </a>
+           <a href="<?=base_url('/index.php/messageOut/add')?>" class="btn btn-sm btn-primary" style="margin-top:-35px;margin-right:-4px" >Add </a>
             <div class="row">
            
             <div class="col-lg-12 grid-margin stretch-card">
