@@ -62,7 +62,7 @@ class Service extends CI_Controller
                         $type = "chat-text";
                         $status = "received";
                         $date_time = Date('Y-m-d h:m:s');
-                        $save_message_in = $this->messageIn_model->add($data_message->externalId,$instance,$date_time,$data_message->pushname,$sender,$type,$status,$message,$data_message);   
+                        $save_message_in = $this->messageIn_model->insert($data_message->externalId,$instance,$date_time,$data_message->pushname,$sender,$type,$status,$message,$data_message);   
                     }
                  
                 }else{
