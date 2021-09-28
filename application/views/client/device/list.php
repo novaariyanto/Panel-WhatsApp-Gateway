@@ -124,11 +124,11 @@
             
             <div class="page-header">
               <h3 class="page-title">
-                </span> Webhook
+                </span> Device
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Webhook</a></li>
+                <li class="breadcrumb-item"><a href="#">Device</a></li>
                   <li class="breadcrumb-item active" aria-current="page">List</li>
                 </ul>
               </nav>
