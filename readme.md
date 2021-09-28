@@ -62,8 +62,10 @@ Group Events API
 - Remove Participants Group
 - Invite Code Group
 - Leave Group
-- Webhook [New]
-- AutoReply [New]
+
+Module New
+- Webhook Module
+- AutoReply Modle
 
 Coming Soon API
 
