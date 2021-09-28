@@ -73,7 +73,7 @@
               var response = JSON.parse(data.responseText);
               alert(response.message)
               if(response.success){
-                window.location.href = "./../message";
+                window.location.href = "./../messageOut";
               }
             
             
