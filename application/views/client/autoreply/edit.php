@@ -161,6 +161,16 @@
                           <textarea type="text" class="form-control"  name="reply" id="exampleInputUsername2" placeholder="ex : hello to" value=""><?=$webhook->reply?></textarea>
                         </div>
                       </div>
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Type<br> <span style="color:red"> <?=form_error('reply')?> <?php echo $this->session->flashdata('message_add_webhook_error'); ?></span></label>
+                        <div class="col-sm-9">
+                          <select name="type" id="" class="form-control">
+                            <option <?=$webhook->type === "1"?"selected":"";?> value="1">Private Message</option>
+                            <option <?=$webhook->type === "2"?"selected":"";?> value="2">All Message</option>
+                          </select>
+                         
+                        </div>
+                      </div>
                       <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
                     </form>
               

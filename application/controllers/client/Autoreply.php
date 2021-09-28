@@ -98,11 +98,13 @@ class Autoreply extends CI_Controller
 
         $receive = $this->input->post('receive');
         $reply = $this->input->post('reply');
+        $type = $this->input->post('type');
         $instance = $this->input->post('instance_key');
         $data = [
             "reply"=>$reply,
             "receive"=>$receive,
-            "instance_key"=>$instance
+            "instance_key"=>$instance,
+            "type"=>$type
         ];
 		
         if ($this->autoreply_model->update($data,$id)) {

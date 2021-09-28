@@ -137,13 +137,10 @@
                                 <option value="">Select Device</option>
                                 <?php
                                   foreach ($devices as $key => $value) {
-                                      if ($value->status === "2") {
-                                        if($value->api_key === $webhook->instance_key){
-                                          
-                                        }
+                                    
                                           ?>
                                 <option <?=$value->api_key=== $webhook->instance_key ? "selected": "";?> value="<?=$value->api_key?>"><?=$value->device_name?></option>
-                                <?php }}?>
+                                <?php }?>
                         </select>
                           <!-- <input type="text" class="form-control"  name="device_name" id="exampleInputUsername2" placeholder="ex : Device A" value=""> -->
 

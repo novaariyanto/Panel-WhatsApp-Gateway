@@ -8,6 +8,7 @@ class Service extends CI_Controller
         $this->load->library('whatsva');
         header("Content-Type: application/json");
         $this->load->model('messages_model');
+        $this->load->model('messageIn_model');
         $this->load->model('setting_model');
         $this->load->model('webhook_model');
         $this->load->model('autoreply_model');
@@ -56,6 +57,12 @@ class Service extends CI_Controller
                         if($replys){
                             $response = $this->whatsva->sendMessageText($instance, $sender, $replys->reply,"");
                         }
+                        // insert type message text
+                        $data_message = $data->data;
+                        $type = "chat-text";
+                        $status = "received";
+                        $date_time = Date('Y-m-d h:m:s');
+                        $save_message_in = $this->messageIn_model->add($data_message->externalId,$instance,$date_time,$data_message->pushname,$sender,$type,$status,$message,$data_message);   
                     }
                  
                 }else{
