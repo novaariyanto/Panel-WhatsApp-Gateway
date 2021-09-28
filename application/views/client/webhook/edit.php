@@ -88,6 +88,12 @@
                 <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
+ <li class="nav-item">
+              <a class="nav-link" href="<?=base_url('index.php/messageIn')?>">
+                <span class="menu-title">Message In</span>
+                <i class="mdi mdi-inbox menu-icon"></i>
+              </a>
+            </li>
    <li class="nav-item active">
               <a class="nav-link" href="<?=base_url('index.php/webhook')?>">
                 <span class="menu-title">Webhook</span>

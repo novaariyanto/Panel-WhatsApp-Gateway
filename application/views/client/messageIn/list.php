@@ -88,18 +88,17 @@
                 <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
- <li class="nav-item">
+ <li class="nav-item active">
               <a class="nav-link" href="<?=base_url('index.php/messageIn')?>">
                 <span class="menu-title">Message In</span>
                 <i class="mdi mdi-inbox menu-icon"></i>
               </a>
             </li>
-
-            <li class="nav-item active">
-              <a class="nav-link" href="<?=base_url("index.php/webhook")?>" >
+               <li class="nav-item">
+              <a class="nav-link" href="<?=base_url('index.php/webhook')?>">
                 <span class="menu-title">Webhook</span>
                 <i class="mdi mdi-access-point menu-icon"></i>
-              </a>
+                </a>
             </li>
   <li class="nav-item">
               <a class="nav-link" href="<?=base_url('index.php/autoreply')?>">
@@ -107,94 +106,111 @@
                 <i class="mdi mdi-reply  menu-icon"></i>
               </a>
             </li>
-           
             <li class="nav-item">
               <a class="nav-link" href="https://documenter.getpostman.com/view/6198796/U16opPKp" target="_blank">
                 <span class="menu-title">Documentation</span>
                 <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
             </li>
-          
+           
            
           </ul>
         </nav>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            
+         
             <div class="page-header">
+            
               <h3 class="page-title">
-                </span> Webhook
+                </span> Message In
               </h3>
+             
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Webhook</a></li>
+                <li class="breadcrumb-item"><a href="#">Message In</a></li>
                   <li class="breadcrumb-item active" aria-current="page">List</li>
                 </ul>
+               
               </nav>
+              
             </div>
-            <a href="<?=base_url('/index.php/webhook/add')?>" class="btn btn-sm btn-primary" style="margin-top:-35px;margin-right:-4px" >Add </a>
-          
             <div class="row">
+           
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                    <div class="table-responsive">
-                     
                     <table class="table table-hover">
                       <thead>
                         <tr>
                           <th>Number</th>
                           <th>Device</th>
-                          <th>Url Webhook</th>
-                        
-                          <th></th>
+                          <th>Message</th>
+                          <th>From</th>
+                          <th>Type</th>
+                          <th>Date</th>
+                          <th>Status</th>
                         </tr>
                       </thead>
                       <tbody>
                           <?php 
-
-                        $page = @$_GET['page'];
-                        $page2 = (int)$page + 1;
-                          $limit = 10;
-                          if(!@$page){
-                              $start = 0;
-                          }else{
-                              $start = $page * $limit;
-                              
-                          }
-                          
-                          if(($start+$limit) >= $devices_count){
-                              $buttonNext = '<a href="#" class="btn btn-sm">Finis</a>';
-                          }else{
-                              $buttonNext = '<a href="?page='.$page2.'" class="btn btn-sm">Next</a>';
-                          }
-  
-                          $i = $start ;
-                        
-                          foreach ($devices as $value) {
+                         
+                         
+                          $page = @$_GET['page'];
+                          $page2 = (int)$page + 1;
+                            $limit = 10;
+                            if(!@$page){
+                                $start = 0;
+                            }else{
+                                $start = $page * $limit;
+                                
+                            }
+                           
+                            if(($start+$limit) >= $messages_count){
+                                $buttonNext = '<a href="#" class="btn btn-sm">Finis</a>';
+                            }else{
+                                $buttonNext = '<a href="?page='.$page2.'" class="btn btn-sm">Next</a>';
+                            }
+                            $i = $start ;
+                            
+                          foreach ($messages as $value) {
                              
                               $i += 1;
-                              $status = $value->status;
-                              $status_show = "";
-                              $btn_scan = "";
                             
-                             
+                              $type = $value->type;
+                              $message = "";
+                              if($type === "chat-text"||$type === "chat-image"||$type === "chat-document"||$type === "chat-video"){
+                                  $message = $value->message;
+                              }else{
+                                  $message = json_decode($value->message);
+                                  $amessage = (array)$message;
+                                  $b = array_keys($amessage);
+                                  $message = @$b[0];
+                               
+                                
+                                }
+                                if(strlen($message) > 30){
+                                    $message = substr($message, 0,20)."...";
+                                }
+                               
                               echo '<tr>
                           <td>'.$i.'</td>
                           <td>'.$value->device_name.'</td>
-                          <td>'.$value->url.'</td>                     
-                     
-                          <td><a href="'.base_url("index.php/webhook/".$value->id).'" class="btn btn-sm btn-info">Edit</a><br><a href="'.base_url("index.php/webhook/delete/".$value->id).'" class="btn btn-sm btn-danger">Delete</a></td>
+                          <td>'.$message.'</td>
+                          <td>'.$value->pushname.'</td>
+                          <td > '.$value->type.'</td>
+                          <td>'.$value->date_time.'</td>
+                          <td class="text-info">'.$value->status_message.'</td>
+                          
                         </tr>';
                           } ?>
                       
                        
                       </tbody>
                     </table>
-                    
-                   </div>
-                   <?=$buttonNext?>
+                    </div>
+                    <?=$buttonNext?>
                   </div>
                 </div>
               </div>
