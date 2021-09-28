@@ -84,7 +84,7 @@ class Autoreply extends CI_Controller
         $data['current_user'] = $this->auth_model->current_user();
         $data['devices'] = $this->device_model->getAlls();
         $data['webhook'] = $this->autoreply_model->getbyId($id);
-
+        
         $rules = $this->autoreply_model->rules();
         $this->form_validation->set_rules($rules);
 
@@ -96,15 +96,17 @@ class Autoreply extends CI_Controller
             return;
         }
 
-        $url = $this->input->post('webhook_url');
+        $receive = $this->input->post('receive');
+        $reply = $this->input->post('reply');
         $instance = $this->input->post('instance_key');
         $data = [
-            "url"=>$url,
+            "reply"=>$reply,
+            "receive"=>$receive,
             "instance_key"=>$instance
         ];
 		
         if ($this->autoreply_model->update($data,$id)) {
-            redirect('./webhook');
+            redirect('./autoreply');
         }
       
         $this->load->view('layouts/header', $data);

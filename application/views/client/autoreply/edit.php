@@ -139,27 +139,28 @@
                                 <option value="">Select Device</option>
                                 <?php
                                   foreach ($devices as $key => $value) {
-                                      if ($value->status === "2") {
-                                        if($value->api_key === $webhook->instance_key){
-                                          
-                                        }
+                                     
                                           ?>
                                 <option <?=$value->api_key=== $webhook->instance_key ? "selected": "";?> value="<?=$value->api_key?>"><?=$value->device_name?></option>
-                                <?php }}?>
+                                <?php }?>
                         </select>
                           <!-- <input type="text" class="form-control"  name="device_name" id="exampleInputUsername2" placeholder="ex : Device A" value=""> -->
 
                         </div>
                        </div>
-                      <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Webhook Url <br> <span style="color:red"> <?= form_error('url') ?> <?php echo $this->session->flashdata('message_add_webhook_error'); ?></span></label>
+                   
+                         <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Receive<br> <span style="color:red"> <?=form_error('receive')?> <?php echo $this->session->flashdata('message_add_webhook_error'); ?></span></label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control"  name="webhook_url" id="exampleInputUsername2" placeholder="ex : https://webhook.site" value="<?=$webhook->url?>">
-                         
+                          <input type="text" class="form-control"  name="receive" id="exampleInputUsername2" placeholder="ex : !hello" value="<?=$webhook->receive?>">
+                        </div>
                       </div>
-                    
-                         </div>
-                      
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Reply<br> <span style="color:red"> <?=form_error('reply')?> <?php echo $this->session->flashdata('message_add_webhook_error'); ?></span></label>
+                        <div class="col-sm-9">
+                          <textarea type="text" class="form-control"  name="reply" id="exampleInputUsername2" placeholder="ex : hello to" value=""><?=$webhook->reply?></textarea>
+                        </div>
+                      </div>
                       <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
                     </form>
               
