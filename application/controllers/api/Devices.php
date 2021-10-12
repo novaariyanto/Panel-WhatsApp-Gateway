@@ -14,7 +14,7 @@ class Devices extends CI_Controller
     public function getQR($device)
     {
 		$datasetting = $this->setting_model->getSetting();
-        $data_device = $this->device_model->getbyId($device);
+        $data_device = $this->device_model->getWhere(["api_key"=>$device]);
         if ($data_device) {
             $data = $this->whatsva->instancecData($data_device->api_key,$datasetting->panel_key);
             $data = json_decode($data);

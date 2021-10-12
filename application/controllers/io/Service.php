@@ -64,7 +64,7 @@ class Service extends CI_Controller
                         $timestamp = $data_message->ts;
                         $datetimeFormat = 'Y-m-d h:m:s';
 
-                        $date_time = date($datetimeFormat,$timestamp);
+                        $date_time = Date($datetimeFormat);
                         // If you must have use time zones
                         // $date = new \DateTime('now', new \DateTimeZone('Europe/Helsinki'));
                     

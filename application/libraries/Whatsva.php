@@ -13,8 +13,8 @@ class Whatsva
 
     public function ws_url()
     {
-       
-        return "https://multidevice.whatsva.com";
+       return "http://localhost:8081";
+        // return "https://multidevice.whatsva.com";
     }
     public function some_method()
     {
@@ -372,6 +372,16 @@ class Whatsva
 
     // End Group Event
     
+    // tools
+    public function checkNumber($instance_key,$jid)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "jid" => $jid
+        ];
+        return $this->curlData($this->ws_url() . "/api/checkNumber", $data);
+    }
+    // end tools
     
     // Core of the Core
     public function curlData($url, $data)
@@ -390,6 +400,8 @@ class Whatsva
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         $result = curl_exec($ch);
         curl_close($ch);
         return $result;

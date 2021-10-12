@@ -128,6 +128,14 @@ $route['api/listGroup'] = 'api/group/listGroup';
 $route['io'] = 'io/service';
 // end io service
 
+// instance
+$route['api/device/(:any)'] = 'api/devices/getQR/$1';
+// end instance
+
+// tools 
+$route['api/checkNumber'] = 'api/tools/checkNumber';
+// end tools
+
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

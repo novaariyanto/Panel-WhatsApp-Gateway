@@ -33,7 +33,8 @@ class Device_model extends CI_Model
             return null;
         }
         $user_id = $this->session->userdata(self::SESSION_KEY);
- 
+        if($gettinData){
+            
 		if($gettinData->success){ 
 			$gettinData->data->instance_name;
 				$data = [
@@ -50,6 +51,10 @@ class Device_model extends CI_Model
             $this->session->set_flashdata('message_add_device_error', $gettinData->message);
 			return FALSE;
 		}
+        }else{
+            $this->session->set_flashdata('message_add_device_error', "can't connect to server");
+			return FALSE;
+        }
     }
   
     public function getCount()
@@ -100,6 +105,11 @@ class Device_model extends CI_Model
 	public function getbyId($id)
 	{
 		$query = $this->db->get_where($this->_table, ['id' => $id]);
+        return $query->row();
+	}
+    public function getWhere($where)
+	{
+		$query = $this->db->get_where($this->_table, $where);
         return $query->row();
 	}
     public function getSetting()
