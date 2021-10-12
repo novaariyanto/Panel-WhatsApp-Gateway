@@ -13,8 +13,8 @@ class Whatsva
 
     public function ws_url()
     {
-       return "http://localhost:8081";
-        // return "https://multidevice.whatsva.com";
+    
+        return "https://multidevice.whatsva.com";
     }
     public function some_method()
     {
