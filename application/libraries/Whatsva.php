@@ -15,7 +15,6 @@ class Whatsva
     {
     
         return "https://multidevice.whatsva.com";
-        // return "http://localhost:8081";
     }
     public function some_method()
     {
