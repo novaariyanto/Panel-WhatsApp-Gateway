@@ -15,6 +15,7 @@ class Whatsva
     {
     
         return "https://multidevice.whatsva.com";
+        // return "http://localhost:8081";
     }
     public function some_method()
     {
@@ -51,6 +52,15 @@ class Whatsva
             "instance_key" => $instance_key
             , "panel_key" => $panel_key];
         return $this->curlData($this->ws_url() . "/api/instanceReset", $data);
+    }
+    public function updateMultideviceInstance($instance_key, $panel_key,$multidevice)
+    {
+        $data = [
+            "instance_key" => $instance_key,
+            "panel_key" => $panel_key,
+            'multidevice'=>$multidevice
+        ];
+        return $this->curlData($this->ws_url() . "/api/update_multidevice", $data);
     }
     // End Instance
 

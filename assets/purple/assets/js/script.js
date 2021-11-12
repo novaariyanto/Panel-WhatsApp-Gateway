@@ -87,3 +87,20 @@
   
     }
    
+    function handleClick(url,instance_key,multidevice) {
+     
+      $.ajax({
+        
+        url: url,
+        data: {
+          instance_key : instance_key,
+          multidevice : multidevice
+        },
+        type: "post",
+        dataType: 'json',
+       success : function (results) {
+         alert(results.message)
+         location.reload()
+       }
+      })
+    }

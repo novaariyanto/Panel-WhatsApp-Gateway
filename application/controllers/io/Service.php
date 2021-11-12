@@ -22,7 +22,10 @@ class Service extends CI_Controller
                 // event
                 $event = $data->event;
                 $instance = $data->instance_key;
-                $sender = $data->data->chat->jid->user;
+                $sender = @$data->data->chat->jid->user;
+                if(!$sender){
+                    $sender = $data->sender;
+                }
                 if($event === "open"){
                     echo json_encode([
                         "success"=>true,
@@ -51,9 +54,11 @@ class Service extends CI_Controller
                         $curl =   $this->curlData($value->url,$data->data);
                       }
                     }
+                    print_r($data);
                     if(@$data->data->conversation){
                         $message = $data->data->conversation;
                         $replys = $this->autoreply_model->getWhere2(["receive"=>$message]);
+                        print_r($replys);
                         if($replys){
                             $response = $this->whatsva->sendMessageText($instance, $sender, $replys->reply,"");
                         }
@@ -61,15 +66,14 @@ class Service extends CI_Controller
                         $data_message = $data->data;
                         $type = "chat-text";
                         $status = "received";
-                        $timestamp = $data_message->ts;
+                        $timestamp = @$data_message->ts;
                         $datetimeFormat = 'Y-m-d h:m:s';
 
                         $date_time = Date($datetimeFormat);
                         // If you must have use time zones
                         // $date = new \DateTime('now', new \DateTimeZone('Europe/Helsinki'));
                     
-                        $save_message_in = $this->messageIn_model->insert($data_message->externalId,$instance,$date_time,$data_message->pushname,$sender,$type,$status,$message,$data_message);   
-                    }
+                                           }
                  
                 }else{
                     echo json_encode([

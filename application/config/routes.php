@@ -83,6 +83,7 @@ $route['messageOut/add'] = 'client/message/add';
 $route['messageIn'] = 'client/messageIn';
 
 $route['api/device/detail/(:any)'] = 'api/devices/getQR/$1';
+$route['api/updateMultidevice'] = 'api/devices/updateMultidevice';
 
 $route['api'] = 'api/messages';
 $route['api/sendMessageText'] = 'api/messages/sendMessageText';

@@ -75,7 +75,12 @@
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
-         
+            <li class="nav-item ">
+              <a class="nav-link" href="<?=base_url("index.php/billings")?>">
+                <span class="menu-title">Billing</span>
+                <i class="mdi mdi-currency-usd menu-icon"></i>
+              </a>
+            </li>
             <li class="nav-item active">
               <a class="nav-link" href="<?=base_url("index.php/device")?>">
                 <span class="menu-title">Device</span>
@@ -146,6 +151,7 @@
                         <tr>
                           <th>Number</th>
                           <th>Name</th>
+                          <th>Multidevice</th>
                           <th>Instance Key</th>
                           <th>Data</th>
                           <th>Status</th>
@@ -189,9 +195,17 @@
                               }else{
                                 $status_show = '<label class="badge badge-danger">InActive</label>';
                               }
+                              $muldev = $value->multidevice;
+                              if($muldev == '1'){
+                                $check_md = '<input type="checkbox" checked onclick="handleClick(`'.base_url('index.php/api/updateMultidevice').'`,`'.$value->api_key.'`,`0`)" id="'.$value->api_key.'" name="'.$value->api_key.'" value="'.$value->api_key.'">';
+                             
+                              }else if($muldev == '0'){
+                                $check_md = '<input type="checkbox" onclick="handleClick(`'.base_url('index.php/api/updateMultidevice').'`,`'.$value->api_key.'`,`1`)" id="'.$value->api_key.'" name="'.$value->api_key.'" value="'.$value->api_key.'">';
+                              }
                               echo '<tr>
                           <td>'.$i.'</td>
                           <td>'.$value->device_name.'</td>
+                          <td>'. $check_md.'</td>
                           <td>'.$value->api_key.'</td>
                           <td class="text-danger"> '.$value->data.'</td>
                           <td>'.$status_show.'</td>
